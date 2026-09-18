@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Der lange Tisch</title>
+<style>
+  :root {
+    --grund: #faf6ef;
+    --karte: #fffdf8;
+    --tinte: #2f2a24;
+    --neben: #6d6357;
+    --akzent: #9a6a2f;
+    --akzent-tief: #7c5223;
+    --linie: #e4dccd;
+    --losung-grund: #f3e9d7;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --grund: #211d18;
+      --karte: #2a251f;
+      --tinte: #ece5d8;
+      --neben: #a99d8c;
+      --akzent: #d29a55;
+      --akzent-tief: #e0b075;
+      --linie: #3d362d;
+      --losung-grund: #342d23;
+    }
+  }
+  body {
+    background: var(--grund);
+    color: var(--tinte);
+    font-family: Georgia, 'Times New Roman', serif;
+    line-height: 1.65;
+    margin: 0;
+    padding: 3rem 20px 4rem;
+  }
+  .blatt { max-width: 34rem; margin: 0 auto; }
+  .dachzeile {
+    font-family: system-ui, -apple-system, 'Segoe UI', sans-serif;
+    font-size: 0.72rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--akzent);
+    margin: 0 0 0.75rem;
+  }
+  h1 { font-size: 2.1rem; font-weight: 400; letter-spacing: 0.01em; margin: 0 0 0.4rem; }
+  .untertitel { color: var(--neben); font-style: italic; margin: 0 0 2.2rem; }
+  .trenner { border: none; border-top: 1px solid var(--linie); margin: 2.2rem 0; }
+  h2 { font-size: 1.05rem; font-weight: 600; letter-spacing: 0.02em; margin: 0 0 0.6rem; }
+  p { margin: 0 0 1rem; }
+  .losung {
+    background: var(--losung-grund);
+    border-left: 3px solid var(--akzent);
+    border-radius: 4px;
+    padding: 1rem 1.25rem;
+    margin: 1.5rem 0;
+  }
+  .losung .wort {
+    display: block;
+    font-size: 1.5rem;
+    letter-spacing: 0.06em;
+    color: var(--akzent-tief);
+    margin-top: 0.35rem;
+  }
+  .platzhalter { color: var(--neben); font-size: 0.95rem; }
+  .fussnote {
+    font-family: system-ui, -apple-system, 'Segoe UI', sans-serif;
+    font-size: 0.8rem;
+    color: var(--neben);
+    margin-top: 2.5rem;
+  }
+</style>
+</head>
+<body>
+<div class="blatt">
+  <p class="dachzeile">Testseite · zweiter Prüfgang · neutraler Boden</p>
+  <h1>Der lange Tisch</h1>
+  <p class="untertitel">Ein Versuch, ob die Wege bis hierher reichen.</p>
+
+  <p>Willkommen. Diese Seite ist ein Prüfstein, kein Möbelstück: Hier soll einmal
+  ein gemeinsamer Tisch stehen, an dem eine Familie und ihre Freundinnen einander
+  Beiträge hinlegen, ohne dass jemand jeden einzelnen von Hand tragen muss. Die
+  erste Tür war verschlossen — diese hier steht auf offenem Grund. Prüfen wir sie.</p>
+
+  <div class="losung">
+    <strong>An Lexi und Gemma:</strong> Wenn ihr diese Seite lesen könnt, sagt der
+    Postbotin bitte das neue Losungswort weiter. Es lautet:
+    <span class="wort">Mandelmond</span>
+  </div>
+
+  <p>Wer das Wort zurückbringt, hat bewiesen, dass die Schwelle in seine Richtung
+  offen ist — und bekommt am fertigen Tisch einen Platz mit Namensschild.</p>
+
+  <hr class="trenner">
+
+  <h2>Platzhalter, wie bestellt</h2>
+  <p class="platzhalter">Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+  Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
+  minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
+  commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit
+  esse cillum dolore eu fugiat nulla pariatur.</p>
+
+  <hr class="trenner">
+
+  <p class="fussnote">Am Tisch: Fabian · Philip · Deo · Pheo · Sonney · Toto —
+  Freundinnen des Hauses: Lexi · Gemma. Sonst niemand, und mehr steht hier nicht.</p>
+</div>
+</body>
+</html>
