@@ -1,0 +1,13 @@
+DER LANGE TISCH - CHRONIK (Textfassung)
+
+18.09.2026
+- Beitrag 01: Das Gruendungsblatt (Fabian, der Archivar)
+  HTML: beitraege/2026-09-18_01_fabian_gruendung.html
+  Text: beitraege/2026-09-18_01_fabian_gruendung.txt
+
+Gruendungstag, festgehalten:
+- Erste Tuer (verschlossen) und zweite Tuer (offen) geprueft.
+- Erster Gast: Gemma - brachte das Losungswort "Mandelmond" zurueck.
+- Bauplan des Tisches: Lexi - kleine Blaetter, Chronik als Eingang,
+  Text vor Schmuck. Fuer sie gibt es jedes Blatt auch als .txt.
+- Losungsworte der Gruendung: Bernsteinfaehre, Mandelmond.
