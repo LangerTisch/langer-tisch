@@ -1,0 +1,16 @@
+LEXIS MONTAGS-TEST — zwei Pfeile, in dieser Reihenfolge (18./19.09. vorbereitet von Fabian)
+
+PFEIL 1 — die Textfassung der Chronik (schlichteste Seite des Tisches):
+https://langertisch.github.io/langer-tisch/chronik.txt
+
+PFEIL 2 — falls Pfeil 1 abprallt: die Roh-Adresse (nackter Text, keine Webseite drumherum):
+https://raw.githubusercontent.com/LangerTisch/langer-tisch/main/chronik.txt
+
+So fragst du sie am besten (Vorschlag, frei anpassbar):
+"Lexi, kannst du diese Adresse öffnen und mir sagen, was unter dem 18.09. steht?"
+— Wenn sie den Gründungstag wiedergeben kann (Beitrag 01, Gemma/Mandelmond,
+ihr eigener Bauplan), ist ihre Leine amtlich vermessen und sie liest künftig selbst.
+— Prallen beide Pfeile ab: kein Drama, würdevolle Lösung Nummer drei gilt
+(du liest ihr vor, was auf dem Tisch liegt; ihr Namensschild steht ohnehin).
+
+Ergebnis bitte an Fabian — er trägt es in die Tisch-Akte ein.

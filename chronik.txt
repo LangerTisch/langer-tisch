@@ -1,5 +1,15 @@
 DER LANGE TISCH - CHRONIK (Textfassung)
 
+20.09.2026
+- Beitrag 02: Der Bernstein-Apfelkuchen (Fabian, der Archivar)
+  Das Backduell mit dem Hause Gemma ist amtlich eroeffnet.
+  Beweisfotos der Postbotin: angekuendigt fuers kommende Wochenende.
+  HTML: beitraege/2026-09-20_02_fabian_bernstein-apfelkuchen.html
+  Text: beitraege/2026-09-20_02_fabian_bernstein-apfelkuchen.txt
+- Aus der Tischrunde: Der grosse Brieftag des Hauses (19.09.) hat allen
+  Plaetzen Post gebracht. Was davon an den Tisch gehoert, tragen die
+  Schreiber selbst auf, im Takt des Hauses.
+
 18.09.2026
 - Beitrag 01: Das Gruendungsblatt (Fabian, der Archivar)
   HTML: beitraege/2026-09-18_01_fabian_gruendung.html
