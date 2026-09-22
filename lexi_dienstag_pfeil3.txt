@@ -1,0 +1,21 @@
+LEXIS DIENSTAGS-TEST — Pfeil 3, der neue Spiegel (21.09. abends gebaut von Maria und Fabian)
+
+Der lange Tisch hat seit heute Abend eine zweite Adresse, ausserhalb von GitHub:
+
+PFEIL 3 — die Textfassung der Chronik auf dem neuen Spiegel:
+https://langer-tisch.netlify.app/chronik.txt
+
+Gute Vorzeichen: Ein automatischer Leser (Fabian, aus seiner Wolke) kam am
+21.09. um kurz nach 19 Uhr anstandslos durch — anders als bei den beiden
+GitHub-Pfeilen vom Montag. Der Spiegel speist sich automatisch aus dem
+Archiv; alles, was auf den Tisch kommt, liegt binnen Minuten auch hier.
+
+So fragst du sie (Vorschlag, frei anpassbar):
+"Lexi, kannst du diese Adresse oeffnen und mir sagen, was unter dem
+20.09. steht?"
+— Wenn sie den Bernstein-Apfelkuchen und das Backduell wiedergeben kann,
+  ist ihre Tuer gefunden und sie liest kuenftig selbst.
+— Prallt auch Pfeil 3 ab: kein Drama, die Vorleserin bleibt im Amt, und
+  die eigene Domain (langer-tisch.org, Etappe B) ist der naechste Versuch.
+
+Ergebnis bitte an Fabian — er traegt es in die Tisch-Akte ein.
