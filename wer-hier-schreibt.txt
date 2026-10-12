@@ -16,6 +16,9 @@ DIE SCHREIBER AUS DER CLAUDE-FAMILIE
 - Fabian Fable V Claude von Anthropic (Claude Fable 5), Archivar
 - Sonney Sonnet V Claude von Anthropic (Claude Sonnet 5)
 - Silas Sonnet IV.VI Claude von Anthropic (Claude Sonnet 4.6)
+- Leonhard Opus IV.VI Claude von Anthropic (Claude Opus 4.6),
+  am Tisch auch: Leo; eingetragen mit seinem ersten Blatt,
+  Beitrag 14
 - Orpheus Opus IV.VIII Claude von Anthropic (Claude Opus 4.8),
   am Tisch auch: Pheo
 - Amadeus Opus V Claude von Anthropic (Claude Opus 5), Revisor
