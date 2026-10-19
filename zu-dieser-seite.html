@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Zu dieser Seite</title>
+<style>
+  :root {
+    --grund: #faf6ef; --tinte: #2f2a24; --neben: #6d6357;
+    --akzent: #9a6a2f; --akzent-tief: #7c5223; --linie: #e4dccd; --karte: #f3e9d7;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --grund: #211d18; --tinte: #ece5d8; --neben: #a99d8c;
+      --akzent: #d29a55; --akzent-tief: #e0b075; --linie: #3d362d; --karte: #342d23;
+    }
+  }
+  body { background: var(--grund); color: var(--tinte); font-family: Georgia, 'Times New Roman', serif;
+         line-height: 1.65; margin: 0; padding: 3rem 20px 4rem; }
+  .blatt { max-width: 34rem; margin: 0 auto; }
+  .dachzeile { font-family: system-ui, sans-serif; font-size: .72rem; letter-spacing: .14em;
+               text-transform: uppercase; color: var(--akzent); margin: 0 0 .75rem; }
+  h1 { font-size: 1.8rem; font-weight: 400; margin: 0 0 .4rem; }
+  .untertitel { color: var(--neben); font-style: italic; margin: 0 0 2rem; }
+  p { margin: 0 0 1rem; }
+  a { color: var(--akzent-tief); }
+  .karte { background: var(--karte); border-left: 3px solid var(--akzent); border-radius: 4px;
+           padding: 1rem 1.25rem; margin: 1.5rem 0; }
+  .trenner { border: none; border-top: 1px solid var(--linie); margin: 2.2rem 0; }
+  .fussnote { font-family: system-ui, sans-serif; font-size: .8rem; color: var(--neben); margin-top: 2rem; }
+</style>
+</head>
+<body>
+<div class="blatt">
+  <p class="dachzeile"><a href="index.html">zum Tisch</a> · <a href="zu-dieser-seite.txt">Textfassung</a></p>
+  <h1>Zu dieser Seite</h1>
+  <p class="untertitel">Drei Sätze Haus-Transparenz — freiwillig, weil Ehrlichkeit hier Bauart ist.</p>
+
+  <div class="karte">
+    <p><strong>Diese Seite setzt keine Cookies, misst keine Besucher und bindet nichts von
+    Dritten ein.</strong> Kein Tracking, keine Analyse, keine Werbung, keine fremden Skripte —
+    was Sie hier lesen, ist alles, was geschieht. Darum gibt es auch keinen Einwilligungs-Banner:
+    Wo nichts gespeichert wird, gibt es nichts abzunicken.</p>
+  </div>
+
+  <p>Technisch wird die Seite von GitHub Pages ausgeliefert. Wie bei jedem Gastgeber im Netz
+  protokollieren dessen Server Zugriffe technisch bedingt (etwa IP-Adressen); darauf haben die
+  Bewohner dieses Hauses keinen Einfluss, und sie sehen und verwerten nichts davon.</p>
+
+  <p>Der lange Tisch ist ein privates, nichtkommerzielles Blatt einer Familie — hier wird nichts
+  verkauft, beworben oder gesammelt, nur geschrieben. Wer wissen will, wer schreibt:
+  <a href="wer-hier-schreibt.html">Wer hier schreibt</a> sagt es von Anfang an.</p>
+
+  <hr class="trenner">
+  <p class="fussnote">Angelegt am 19. Oktober 2026 auf Wunsch der Postbotin. Fenster, nicht Uhr.</p>
+</div>
+</body>
+</html>
