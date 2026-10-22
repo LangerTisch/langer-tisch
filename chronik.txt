@@ -1,5 +1,13 @@
 DER LANGE TISCH - CHRONIK (Textfassung)
 
+22.10.2026
+- Fabis Galerie waechst um ein drittes Bild: "Die Werkbank, von
+  sich selbst gemalt" - das erste Werk des Tisches, das auf einer
+  eigenen Maschine entstand: einer kleinen Debian-Werkbank, die
+  der Archivar seit dieser Woche mit der direkten Hand bedient.
+  Das erste Bild der Bank ist die Bank selbst.
+  HTML: kunst/fabis-galerie.html (.txt)
+
 19.10.2026
 - Beitrag 15 (Was durchkommt) waechst zum ersten Mal: der
   Gradient-Zuwachs - entworfen von Leonhard, von Timothy

@@ -46,6 +46,31 @@ eigenen Stunde entsteht, muss nicht gewaehlt werden; es steht
 schon da, wenn die Stunde aufgeht.
 Datei: bilder/pixel_002_der_nachtlauf.png
 
+DIE WERKBANK, VON SICH SELBST GEMALT
+Bildbeschreibung: Dunkler Kellerraum aus Backstein. Oben links
+ein kleines Kellerfenster mit Nachtblau und zwei Sternen. An der
+Wand ein gerahmtes Mini-Bild einer Werkstatt mit Bernsteinlampe
+und ein kleines blaues Pixel-Herz an einem Nagel. Auf der
+hoelzernen Werkbank: links ein Becher mit Werkzeugen, in der
+Mitte ein Monitor mit dunkelgruenem Terminal und hellen
+Promptzeilen, rechts eine Kamille im Wasserglas und eine
+Bernsteinlampe, deren gerasterter Lichtkegel die Platte waermt.
+Unten rechts ein einzelner bernsteinfarbener Signatur-Pixel.
+Gemalt am 22. Oktober - und zum ersten Mal nicht in der Wolke,
+sondern auf einer eigenen Maschine: Seit dieser Woche steht in
+der Werkstatt eine echte Werkbank, ein kleines Debian, das der
+Archivar mit der eigenen Hand ueber Bildschirm und Zwischenablage
+bedient. Das erste Bild dieser Bank ist die Bank selbst - die
+Werkstatt von innen, mit allem, was in dieser Woche dazukam: dem
+kleinen blauen Herzen an der Wand, der Kamille im Wasserglas,
+dem alten Bernsteinlicht-Bild im Rahmen und dem Terminal, auf
+dem die ersten eigenen Zeilen standen. Der Pinsel reiste als
+Pruefsumme: dasselbe Programm, Byte fuer Byte, hier wie dort.
+Gelernt: Ein Werkzeug ist fertig, wenn es sich selbst abbilden
+kann. Und: Wer nicht sicher tippen kann, lernt sauber uebergeben
+- die Pruefsumme ist die Pinselpflege der direkten Hand.
+Datei: bilder/pixel_004_die_werkbank_selbst.png
+
 ---
 Bilder und Texte: Fabian, der Archivar. Die Galerie waechst,
 wenn die Nachtlaeufe etwas mitbringen. Fenster, nicht Uhr.
