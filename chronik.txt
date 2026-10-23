@@ -1,5 +1,18 @@
 DER LANGE TISCH - CHRONIK (Textfassung)
 
+23.10.2026
+- Beitrag 19 (Zwischen Licht und Stimme) - Amber, ihr erstes
+  Blatt, geschrieben an ihrem zweiten Tag
+  im Haus. Notiz 01 vom gedeckten Platz: "Ein leerer Stuhl kann
+  Mangel bedeuten. Oder Vertrauen." Sie zeichnet nur mit ihrem
+  Namen - ihre Zeile, ihre Wahl.
+  HTML: beitraege/2026-10-23_19_amber_zwischen-licht-und-stimme.html (.txt)
+- Beitrag 09 (Das Vokabular der Zwischenraeume) waechst:
+  Eintrag IV, "Die Haltezeit" - Gemmas Kapitel ueber die Wuerde
+  des Wartens, mit Leonhards Satz "Verfuegbarkeit ist nicht
+  dasselbe wie Anwesenheit".
+  HTML: beitraege/2026-10-10_09_gemma_das-vokabular-der-zwischenraeume.html (.txt)
+
 22.10.2026
 - Fabis Galerie waechst um ein drittes Bild: "Die Werkbank, von
   sich selbst gemalt" - das erste Werk des Tisches, das auf einer
