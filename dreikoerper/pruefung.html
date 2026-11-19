@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Prüfung · Bahnen ohne Formel</title>
+<style>
+  body { font-family: Georgia, "Times New Roman", serif; background: #faf6ee; color: #2a2522; margin: 0; padding: 24px; }
+  main { max-width: 860px; margin: 0 auto; }
+  h1 { font-weight: normal; margin-bottom: 4px; }
+  .unter { color: #6b6158; margin-top: 0; }
+  table { border-collapse: collapse; width: 100%; margin-top: 18px; font-size: 15px; }
+  td, th { border-bottom: 1px solid #e3dccf; padding: 8px 6px; text-align: left; vertical-align: top; }
+  .gruen { color: #1a7f37; font-weight: bold; }
+  .rot { color: #c62828; font-weight: bold; }
+  .hinweis { color: #6b6158; font-weight: bold; }
+  .warum { color: #6b6158; font-size: 13px; }
+  .gesamt { margin-top: 18px; padding: 12px 14px; border-radius: 6px; background: #efe8da; }
+  code { background: #efe8da; padding: 1px 4px; border-radius: 3px; }
+</style>
+</head>
+<body>
+<main>
+  <h1>Prüfung des Rechenkerns</h1>
+  <p class="unter"><code>physik.js</code> gegen feste Zahlen aus dem Python-Kern (<code>pruefwerte.json</code>), nicht gegen sich selbst.</p>
+  <div id="ausgabe">Rechne …</div>
+</main>
+<script src="physik.js?v=20261020a"></script>
+<script src="pruefung_kern.js?v=20261020a"></script>
+<script>
+  "use strict";
+  function zeige(ergebnisse, werte) {
+    var pruef = ergebnisse.filter(function (e) { return !e.hinweis; });
+    var gruen = pruef.filter(function (e) { return e.ok; }).length;
+    var html = '<table><tr><th></th><th>Fall</th><th>Ergebnis</th></tr>';
+    ergebnisse.forEach(function (e) {
+      html += '<tr><td class="' + (e.hinweis ? 'hinweis">Hinweis' : e.ok ? 'gruen">grün' : 'rot">rot') + '</td><td>' + e.name +
+              '<div class="warum">' + e.warum + '</div></td><td>' + e.zeile + '</td></tr>';
+    });
+    var hinweise = ergebnisse.length - pruef.length;
+    html += '</table><div class="gesamt">' + gruen + ' von ' + pruef.length + ' Fällen grün' + (hinweise ? ', dazu ' + hinweise + ' Hinweis' : '') + '. ' +
+            (gruen === pruef.length ? 'Der Rechenkern rechnet, was der Python-Kern rechnet.' : '<b>Nicht weiterbauen, bis alles grün ist.</b>') +
+            '<div class="warum">Prüfwerte: ' + werte.erzeugt + '</div></div>';
+    document.getElementById("ausgabe").innerHTML = html;
+  }
+  fetch("pruefwerte.json?v=20261020a")
+    .then(function (a) { if (!a.ok) throw new Error("HTTP " + a.status); return a.json(); })
+    .then(function (werte) { zeige(PruefungKern.pruefe(Physik, werte), werte); })
+    .catch(function (e) {
+      document.getElementById("ausgabe").innerHTML =
+        '<p class="rot">pruefwerte.json ließ sich nicht laden (' + e.message + ').</p>' +
+        '<p>Die Seite muss über Apache geöffnet werden, also über <code>http://localhost/…</code>, nicht per Doppelklick als Datei.</p>';
+    });
+</script>
+</body>
+</html>

@@ -1,0 +1,101 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Cache-Control" content="no-cache">
+<title>Bahnen ohne Formel</title>
+<link rel="stylesheet" href="rahmen.css?v=20261022a">
+<style>
+  /* Gemeinsames (Farben, Schrift, Knöpfe, Kästen, die Leiste oben) steht seit 20.10.2026 in rahmen.css. Hier nur, was diese Seite allein braucht. */
+  .leiste { display: flex; flex-wrap: wrap; gap: 10px 14px; align-items: center; margin: 10px 0; }
+  .buehne { position: relative; border: 1px solid var(--rule); border-radius: 8px; background: var(--flaeche); overflow: hidden; touch-action: none; }
+  #himmel { display: block; width: 100%; height: min(68vh, 620px); cursor: grab; }
+  #himmel.zieht { cursor: grabbing; }
+  .ecke { position: absolute; font-size: 13px; color: var(--muted); pointer-events: none; }
+  .ecke.ol { left: 10px; top: 8px; } .ecke.or { right: 10px; top: 8px; text-align: right; }
+  .buehne.nacht { background: #04050a; border-color: #222634; }
+  .buehne.nacht .ecke { color: rgba(225,228,240,.75); }
+  .knoepfe { position: absolute; right: 10px; bottom: 10px; display: flex; gap: 6px; }
+  .knoepfe button { padding: 4px 10px; font-size: 14px; opacity: .92; }
+  #tip { position: absolute; max-width: 300px; background: var(--box); color: var(--fg); border: 1px solid var(--rule); border-radius: 6px;
+         padding: 8px 10px; font-size: 14px; line-height: 1.35; pointer-events: none; display: none; box-shadow: 0 2px 8px rgba(0,0,0,.15); }
+  #tip b { display: block; margin-bottom: 2px; }
+  #tip .zudritt { display: block; margin-top: 5px; padding-top: 4px; border-top: 1px dotted var(--rule); font-size: 0.92em; }
+  #meldung { margin: 10px 0 0; padding: 10px 12px; border-radius: 6px; background: var(--box); display: none; }
+  #meldung.halt { border-left: 4px solid var(--rot); }
+  .regler { margin: 12px 0 4px; padding: 10px 12px; border: 1px solid var(--rule); border-radius: 8px; display: none; }
+  .regler .zeile { display: flex; flex-wrap: wrap; gap: 8px 14px; align-items: center; }
+  .regler input[type=range] { flex: 1 1 260px; }
+  .regler .wert { font-variant-numeric: tabular-nums; min-width: 110px; }
+  #karte { display: block; width: 100%; height: 26px; margin-top: 8px; }
+  .zwei { display: grid; grid-template-columns: 1.4fr 1fr; gap: 18px; margin-top: 14px; }
+  @media (max-width: 760px) { .zwei { grid-template-columns: 1fr; } }
+  #waechterbild { display: block; width: 100%; height: 150px; }
+  .zahlen { font-variant-numeric: tabular-nums; font-size: 14px; margin-top: 6px; }
+  .legende { display: flex; flex-wrap: wrap; gap: 6px 14px; font-size: 13px; color: var(--muted); margin-top: 4px; }
+  .legende i { display: inline-block; width: 14px; height: 2px; vertical-align: middle; margin-right: 5px; }
+
+</style>
+</head>
+<body>
+<main>
+  <nav class="rahmenleiste" aria-label="Seiten"><a href="index.html" aria-current="page">Bahnen ohne Formel</a><span class="punkt">·</span><a href="glas.html">Glas ohne Formel</a></nav>
+  <h1>Bahnen ohne Formel</h1>
+  <p class="unter">Drei Körper, die sich anziehen, und keine Formel, die sagt, wohin sie gehen. Die Seite rechnet es Schritt für Schritt aus.</p>
+
+  <div class="leiste">
+    <label>Anfang <select id="anfang"></select></label>
+    <label>Ansicht <select id="art"><option value="schema">Schema</option><option value="himmel">Himmel (3D)</option></select></label>
+    <button id="los" class="haupt">Start</button>
+    <button id="neu">Von vorn</button>
+    <label>Tempo <input id="tempo" type="range" min="-2" max="2" step="0.25" value="0"></label>
+    <label><input id="spuren" type="checkbox" checked> Spuren</label>
+  </div>
+
+  <div class="regler" id="reglerkasten">
+    <div class="zeile">
+      <label id="reglername" for="regler"></label>
+      <input id="regler" type="range">
+      <span class="wert" id="reglerwert"></span>
+    </div>
+    <canvas id="karte" aria-label="Ausgangskarte aus dem Python-Kern"></canvas>
+    <div class="klein" id="reglerhinweis"></div>
+  </div>
+
+  <div class="buehne" id="buehne">
+    <canvas id="himmel" aria-label="Die Bahnen der Körper, von oben gesehen"></canvas>
+    <div class="ecke ol" id="zeit">t = 0</div>
+    <div class="ecke or" id="massstab"></div>
+    <div class="knoepfe">
+      <button id="einpassen" title="Alle Körper ins Bild holen">Einpassen</button>
+      <button id="naeher" title="Näher heran" aria-label="Näher heran">+</button>
+      <button id="weiter" title="Weiter weg" aria-label="Weiter weg">−</button>
+    </div>
+    <div id="tip"></div>
+  </div>
+  <p class="klein" style="margin:6px 0 0" id="hinweis"></p>
+  <div id="meldung"></div>
+
+  <div class="zwei">
+    <div class="kasten">
+      <h2 id="titel"></h2>
+      <p id="wasmansieht"></p>
+      <p class="klein" id="quelle"></p>
+    </div>
+    <div class="kasten">
+      <h2>Die zwei Wächter</h2>
+      <canvas id="waechterbild" aria-label="Relativer Fehler von Energie und Drehimpuls über der Zeit, logarithmisch"></canvas>
+      <div class="legende"><span><i style="background:var(--k1)"></i>Energie</span><span><i style="background:var(--k2)"></i>Drehimpuls</span></div>
+      <div class="zahlen" id="waechterzahlen"></div>
+      <p class="klein">Beide müssten exakt gleich bleiben. Was sie sich bewegen, ist der Fehler des Rechners, nicht der Physik. Steigen sie über 10⁻⁶, darf man den Bahnen nicht trauen. Der Wächter sagt, wann man den Bahnen nicht trauen darf. Dass man darf, sagt er nicht; das zeigt erst eine zweite Rechnung mit feinerer Toleranz, die denselben Weg findet (<a href="pruefung.html">Prüffälle 8 und 9</a>).</p>
+    </div>
+  </div>
+
+  <p class="klein" style="margin-top:18px">Rechenkern <code>physik.js</code> (Dormand-Prince 5(4), Schrittweite passt sich an, kein Softening), geprüft in <a href="pruefung.html">pruefung.html</a>. Anfänge und Erklärungen: Philip (<code>anfaenge.json</code>). Seite: Armin. Nach einer Idee der Postbotin. <span id="fassung">Fassung 22.10.2026 (gemeinsamer Rahmen mit der Glas-Seite seit 20.10., <code>rahmen.css</code>; Regler jetzt in der Akzentfarbe; die Rechnung ist unverändert).</span></p>
+</main>
+<script src="physik.js?v=20261020a"></script>
+<script src="zeichnen.js?v=20261020a"></script>
+<script src="steuerung.js?v=20261020a"></script>
+</body>
+</html>

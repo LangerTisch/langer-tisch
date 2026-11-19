@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Cache-Control" content="no-cache">
+<title>Glas ohne Formel</title>
+<link rel="stylesheet" href="rahmen.css?v=20261113a">
+<style>
+  /* Was nur diese Seite braucht, kommt hierher (Philip). Gemeinsames steht in rahmen.css. */
+  .buehne { display: grid; grid-template-columns: minmax(260px, 520px) 1fr; gap: 18px; align-items: start; }
+  @media (max-width: 720px) { .buehne { grid-template-columns: 1fr; } }
+  canvas { width: 100%; height: auto; border: 1px solid var(--rule); border-radius: 8px; background: var(--flaeche); display: block; }
+  .regler { display: flex; flex-direction: column; gap: 10px; }
+  .regler input[type=range] { width: 100%; }
+  .knoepfe { display: flex; flex-wrap: wrap; gap: 8px; }
+  .zahlen { font-size: 14px; color: var(--muted); margin-top: 8px; min-height: 2.4em; }
+</style>
+</head>
+<body>
+<main>
+  <nav class="rahmenleiste" aria-label="Seiten"><a href="index.html">Bahnen ohne Formel</a><span class="punkt">·</span><a href="glas.html" aria-current="page">Glas ohne Formel</a></nav>
+  <h1>Glas ohne Formel</h1>
+  <p class="unter">Viele Scheiben, die sich abstoßen, und ein Glas, das sich daran erinnert, wie es abgekühlt wurde.</p>
+
+  <div class="buehne">
+    <div>
+      <canvas id="leinwand" width="520" height="520"></canvas>
+      <div id="zahlen" class="zahlen">Rechne …</div>
+    </div>
+    <div class="regler kasten">
+      <h2>Vierundsechzig Scheiben, verschieden groß</h2>
+      <label>Temperatur <span id="tempwert">0,0040</span>
+        <input id="temp" type="range" min="-7.6" max="-3.0" step="0.02" value="-5.52">
+      </label>
+      <div class="knoepfe">
+        <button id="lauf" class="haupt">Wärmen / Kühlen</button>
+        <button id="tal">Tal</button>
+        <button id="neu">Neue Ziehung</button>
+      </div>
+      <p class="klein">Warm (rechts) wandern die Scheiben und tauschen Plätze; kalt (links) frieren sie in eine Anordnung, die kein Gitter ist.
+        „Tal“ nimmt alle Wärme weg und lässt die Scheiben in das nächste Energieminimum fallen: Was dann bleibt, ist das Glas.
+        Kleine Scheiben sind blau, große gelb bis rot; die Scheiben dürfen sich ein wenig überlappen, das ist die Energie.</p>
+      <p class="klein">Dasselbe Modell wie im Forschungsbericht auf dem Tisch (Beitrag 08): weiche Scheiben, Packungsdichte 1,12,
+        Monte Carlo mit Tausch. Der Kern ist gegen den Python-Zwilling geprüft, Zug für Zug: <a href="glas_pruefung.html">Prüfung</a>.</p>
+      <h2>Was die große Rechnung dazu sagt (Stand 13. November 2026)</h2>
+      <p class="klein">Mit 128 Scheiben ist dasselbe Spiel sieben Wochen lang gelaufen, 40&nbsp;000 Durchgänge auf 24 Temperaturstufen, mit 18 vollständigen
+        Rundreisen der Zustände durch die Leiter, und ein zweites Mal mit einer anderen Ziehung der Scheiben. Beide Ziehungen ergeben dieselbe Kurve:
+        Je kälter, desto weniger verschiedene Anordnungen bleiben dem Glas übrig, und die Zahl der Anordnungen schrumpft gleichmäßig mit dem
+        Logarithmus der Temperatur. Verlängert man die Gerade, erreicht sie die Null bei einer Temperatur zwischen 0,0008 und 0,0014 (in Einheiten
+        der Abstoßung); wo genau, hängt daran, wie man zwei Scheiben als „verschieden“ zählt, und das ist eine Festlegung, keine Messung.</p>
+      <p class="klein">Zwei Berichtigungen aus dem Herbst stecken in dieser Zahl: Die Täler, in die das Glas fällt, sind nicht genau schüsselförmig, sondern
+        oben weiter als unten, und das macht sie bei Wärme etwas größer, als die einfache Rechnung sagt. Und das Volumen, das einem Tal zusteht, war
+        zuerst um einen Faktor der Scheibenzahl zu klein gezählt. Beides hat die Null nach oben geschoben, nicht nach unten. Gefunden wurden beide
+        Fehler von einem Bruder, der an fünf Scheiben nachgerechnet hat.</p>
+      <p class="klein">Was noch fällt: An der kältesten Stufe sind die Täler nach 40&nbsp;000 Durchgängen noch nicht ganz unten; die Energie dort sinkt
+        weiter, um etwa drei Prozent über den Lauf. Die Kurve oben ist also an ihrem kalten Ende um ein kleines Stück zu hoch, und das steht so im Bericht.</p>
+    </div>
+  </div>
+
+  <p class="klein" style="margin-top:18px">Rechenkern und Physik: Philip (<code>glas_physik.js</code>, geprüft in <code>glas_pruefung.html</code> gegen <code>glas_pruefwerte.json</code>). Rahmen: Armin. Nach einer Idee der Postbotin. Fassung 13.11.2026a (Kern, Zeichnen, einfache Steuerung, Stand der großen Rechnung; Scheren folgt).</p>
+</main>
+<script src="glas_physik.js?v=20261113a"></script>
+<script src="glas_steuerung.js?v=20261113a"></script>
+</body>
+</html>

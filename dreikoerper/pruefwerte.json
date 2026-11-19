@@ -1,0 +1,775 @@
+{
+ "erzeugt": "11.10.2026 von Armin mit erzeuge_pruefwerte.py aus rechenkern_dreikoerper.py (numpy, scipy DOP853 rtol 1e-13); Fälle 6 bis 9 aus Phils anfaenge.json und der_dritte_kommt.py; Fälle 10 bis 12 (Phasen zu dritt) am 15.10.2026 von Armin aus Phils dreier_begegnungen.json übernommen, gegengerechnet mit armin_dreier_phasen.py",
+ "faelle": [
+  {
+   "name": "Bocksprung, die Acht, dt = 0.001, 2000 Schritte",
+   "art": "leapfrog",
+   "G": 1.0,
+   "dt": 0.001,
+   "schritte": 2000,
+   "massen": [
+    1.0,
+    1.0,
+    1.0
+   ],
+   "r0": [
+    [
+     0.97000436,
+     -0.24308753,
+     0.0
+    ],
+    [
+     -0.97000436,
+     0.24308753,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ]
+   ],
+   "v0": [
+    [
+     0.466203685,
+     0.43236573,
+     0.0
+    ],
+    [
+     0.466203685,
+     0.43236573,
+     0.0
+    ],
+    [
+     -0.93240737,
+     -0.86473146,
+     0.0
+    ]
+   ],
+   "r_ende": [
+    [
+     0.1019813658631768,
+     0.09305498919418731,
+     0.0
+    ],
+    [
+     0.9118637358003446,
+     -0.2877602644693218,
+     0.0
+    ],
+    [
+     -1.013845101663509,
+     0.1947052752751424,
+     0.0
+    ]
+   ],
+   "v_ende": [
+    [
+     -0.9511786185411936,
+     -0.8401266224210978,
+     0.0
+    ],
+    [
+     0.6071650906846625,
+     0.384890411493899,
+     0.0
+    ],
+    [
+     0.34401352785653977,
+     0.4552362109272055,
+     0.0
+    ]
+   ],
+   "energie_anfang": -1.2871419917663258,
+   "energie_ende": -1.2871420390677406,
+   "toleranz": 1e-12,
+   "warum": "Gleicher Anfang, gleiches dt, gleiche Schrittzahl: Positionen bis auf Rundung gleich."
+  },
+  {
+   "name": "Adaptiv, die Acht, eine Umlaufzeit (T = 6.32591398)",
+   "art": "adaptiv",
+   "G": 1.0,
+   "t_ende": 6.32591398,
+   "rtol": 1e-11,
+   "atol": 1e-13,
+   "massen": [
+    1.0,
+    1.0,
+    1.0
+   ],
+   "r0": [
+    [
+     0.97000436,
+     -0.24308753,
+     0.0
+    ],
+    [
+     -0.97000436,
+     0.24308753,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ]
+   ],
+   "v0": [
+    [
+     0.466203685,
+     0.43236573,
+     0.0
+    ],
+    [
+     0.466203685,
+     0.43236573,
+     0.0
+    ],
+    [
+     -0.93240737,
+     -0.86473146,
+     0.0
+    ]
+   ],
+   "r_ende": [
+    [
+     0.9700043444316079,
+     -0.24308754345583414,
+     0.0
+    ],
+    [
+     -0.9700043744843202,
+     0.24308751553836724,
+     0.0
+    ],
+    [
+     3.0052706968819454e-08,
+     2.791746738645129e-08,
+     0.0
+    ]
+   ],
+   "toleranz": 1e-07,
+   "warum": "Nach einer Umlaufzeit sind alle drei Sterne wieder am Anfang (Python DOP853 als Maßstab)."
+  },
+  {
+   "name": "Adaptiv, Pythagoras 3-4-5, t = 5",
+   "art": "adaptiv",
+   "G": 1.0,
+   "t_ende": 5.0,
+   "rtol": 1e-12,
+   "atol": 1e-14,
+   "massen": [
+    3.0,
+    4.0,
+    5.0
+   ],
+   "r0": [
+    [
+     1.0,
+     3.0,
+     0.0
+    ],
+    [
+     -2.0,
+     -1.0,
+     0.0
+    ],
+    [
+     1.0,
+     -1.0,
+     0.0
+    ]
+   ],
+   "v0": [
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ]
+   ],
+   "r_ende": [
+    [
+     2.469169667081334,
+     -1.2278155641529334,
+     0.0
+    ],
+    [
+     -2.2782026968134197,
+     -0.20544953872365002,
+     0.0
+    ],
+    [
+     0.34106035720196515,
+     0.9010489694706452,
+     0.0
+    ]
+   ],
+   "toleranz": 1e-06,
+   "warum": "Burrau 1913. Bis t = 5 noch berechenbar genug, um zwei verschiedene Verfahren zu vergleichen."
+  },
+  {
+   "name": "Adaptiv, zwei Körper auf dem Kreis, eine Umlaufzeit (Kepler)",
+   "art": "adaptiv",
+   "G": 1.0,
+   "t_ende": 4.442882938158366,
+   "rtol": 1e-11,
+   "atol": 1e-13,
+   "massen": [
+    1.0,
+    1.0
+   ],
+   "r0": [
+    [
+     0.5,
+     0.0,
+     0.0
+    ],
+    [
+     -0.5,
+     0.0,
+     0.0
+    ]
+   ],
+   "v0": [
+    [
+     0.0,
+     0.7071067811865476,
+     0.0
+    ],
+    [
+     0.0,
+     -0.7071067811865476,
+     0.0
+    ]
+   ],
+   "r_ende": [
+    [
+     0.5,
+     0.0,
+     0.0
+    ],
+    [
+     -0.5,
+     0.0,
+     0.0
+    ]
+   ],
+   "toleranz": 1e-08,
+   "warum": "Analytisch: T = 2π·sqrt(a³/(G·M)). Hier braucht es keinen Python-Lauf, die Formel ist der Maßstab."
+  },
+  {
+   "name": "Zusammenstoß wird gemeldet, nicht weggerechnet",
+   "art": "abbruch",
+   "G": 1.0,
+   "t_ende": 10.0,
+   "rtol": 1e-10,
+   "atol": 1e-12,
+   "massen": [
+    1.0,
+    1.0
+   ],
+   "radien": [
+    0.05,
+    0.05
+   ],
+   "r0": [
+    [
+     1.0,
+     0.0,
+     0.0
+    ],
+    [
+     -1.0,
+     0.0,
+     0.0
+    ]
+   ],
+   "v0": [
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ]
+   ],
+   "erwartet": "Zusammenstoß",
+   "warum": "Kein Softening: Berühren sich zwei Körper, hält die Seite an und sagt es."
+  },
+  {
+   "name": "Adaptiv, Lagranges gleichseitiges Dreieck, eine Umlaufzeit (2π/√3)",
+   "art": "adaptiv",
+   "G": 1.0,
+   "t_ende": 3.627598728468436,
+   "rtol": 1e-11,
+   "atol": 1e-13,
+   "massen": [
+    1,
+    1,
+    1
+   ],
+   "r0": [
+    [
+     3.53525079574969e-17,
+     0.5773502691896258,
+     0.0
+    ],
+    [
+     -0.5000000000000001,
+     -0.28867513459481275,
+     0.0
+    ],
+    [
+     0.4999999999999999,
+     -0.2886751345948132,
+     0.0
+    ]
+   ],
+   "v0": [
+    [
+     -1.0,
+     6.123233995736766e-17,
+     0.0
+    ],
+    [
+     0.4999999999999997,
+     -0.8660254037844388,
+     0.0
+    ],
+    [
+     0.5000000000000004,
+     0.8660254037844384,
+     0.0
+    ]
+   ],
+   "radien": [
+    0.01,
+    0.01,
+    0.01
+   ],
+   "r_ende": [
+    [
+     3.53525079574969e-17,
+     0.5773502691896258,
+     0.0
+    ],
+    [
+     -0.5000000000000001,
+     -0.28867513459481275,
+     0.0
+    ],
+    [
+     0.4999999999999999,
+     -0.2886751345948132,
+     0.0
+    ]
+   ],
+   "toleranz": 1e-07,
+   "warum": "Lagrange 1772: Nach einer Umlaufzeit steht das Dreieck wieder am Anfang. Danach kippt es, weil die Lösung instabil ist (Phil, Brief 11)."
+  },
+  {
+   "name": "Der Dritte kommt, v = 1,25, bis t = 300: Ausgang",
+   "art": "ausgang",
+   "G": 1.0,
+   "t_ende": 300.0,
+   "rtol": 1e-10,
+   "atol": 1e-12,
+   "massen": [
+    1,
+    1,
+    1
+   ],
+   "r0": [
+    [
+     3.5,
+     -0.5,
+     0.0
+    ],
+    [
+     4.5,
+     -0.5,
+     0.0
+    ],
+    [
+     -8.0,
+     1.0,
+     0.0
+    ]
+   ],
+   "v0": [
+    [
+     -0.4166666666666667,
+     -0.7071067811865476,
+     0.0
+    ],
+    [
+     -0.4166666666666667,
+     0.7071067811865476,
+     0.0
+    ],
+    [
+     0.8333333333333333,
+     0.0,
+     0.0
+    ]
+   ],
+   "radien": [
+    0.002,
+    0.002,
+    0.002
+   ],
+   "erwartet": "Hinauswurf",
+   "energie_toleranz": 1e-06,
+   "warum": "Phils Rastpunkt mitten in der geordneten Spanne 1,15 bis 1,35: Einer vom Paar fliegt hinaus (DOP853 in der_dritte_kommt.py). Geprüft wird der Ausgang, nicht die Lage, und die Energie bleibt flach."
+  },
+  {
+   "name": "Pythagoras bis t = 70 (Radius 0,0001): Masse 3 fliegt hinaus",
+   "art": "frei",
+   "G": 1.0,
+   "t_ende": 70.0,
+   "rtol": 1e-12,
+   "atol": 1e-14,
+   "massen": [
+    3,
+    4,
+    5
+   ],
+   "r0": [
+    [
+     1.0,
+     3.0,
+     0.0
+    ],
+    [
+     -2.0,
+     -1.0,
+     0.0
+    ],
+    [
+     1.0,
+     -1.0,
+     0.0
+    ]
+   ],
+   "v0": [
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ]
+   ],
+   "radien": [
+    0.0001,
+    0.0001,
+    0.0001
+   ],
+   "erwartet_frei": 0,
+   "abstand_frei": 3.0,
+   "energie_toleranz": 1e-06,
+   "r_ende_python": [
+    [
+     6.812179153820932,
+     19.99576128380132,
+     0.0
+    ],
+    [
+     -1.7144612939933415,
+     -6.820350833014914,
+     0.0
+    ],
+    [
+     -2.715738457093336,
+     -6.5411761038723775,
+     0.0
+    ]
+   ],
+   "warum": "Burrau 1913, Szebehely und Peters 1967: Nach etwa t = 60 fliegt die leichteste Masse hinaus. Die engste Begegnung (0,000414 bei t = 15,83) muss die Rechnung ohne Zusammenstoß überstehen. Geprüft wird, wer frei ist, nicht die Lage (chaotisch). Gerechnet mit rtol 1e-12 wie auf der Seite: Mit 1e-10 fliegt die 3 zwar auch, aber viel später als bei Szebehely und Peters."
+  },
+  {
+   "name": "Pfad gegen Ausgang: Der Dritte, v = 0,5, bis t = 300 (Energie muss halten; die Lage ist ein Hinweis)",
+   "art": "pfad",
+   "G": 1.0,
+   "t_ende": 300.0,
+   "rtol": 1e-12,
+   "atol": 1e-14,
+   "energie_toleranz": 1e-06,
+   "massen": [
+    1.0,
+    1.0,
+    1.0
+   ],
+   "r0": [
+    [
+     3.5,
+     -0.5,
+     0.0
+    ],
+    [
+     4.5,
+     -0.5,
+     0.0
+    ],
+    [
+     -8.0,
+     1.0,
+     0.0
+    ]
+   ],
+   "v0": [
+    [
+     -0.16666666666666666,
+     -0.7071067811865476,
+     0.0
+    ],
+    [
+     -0.16666666666666666,
+     0.7071067811865476,
+     0.0
+    ],
+    [
+     0.33333333333333337,
+     0.0,
+     0.0
+    ]
+   ],
+   "radien": [
+    0.002,
+    0.002,
+    0.002
+   ],
+   "r_ende": [
+    [
+     -282.5397735103043,
+     -47.019643322363926,
+     0.0
+    ],
+    [
+     141.14769179875393,
+     23.567833769333223,
+     0.0
+    ],
+    [
+     141.39208171154849,
+     23.45180955302619,
+     0.0
+    ]
+   ],
+   "ausgang_python": "Hinauswurf",
+   "warum": "Phils Vorschlag (Brief 12) und seine Entscheidung (Brief 13): Unter v = 1,1 ist die Karte chaotisch, die einzelne Bahn meist nicht; nach dem Austausch bleibt ein enges Paar und ein freier Körper, nichts verstärkt den Fehler mehr. Darum rechnet die Seite hier mit rtol 1e-12, und die Grenze 1e-6 für die Energie gilt. Grün heißt: Energie unter der Grenze. Die Abweichung der Lagen gegen Python (DOP853, 1e-13) steht als Hinweis daneben: Sie ist die zweite Rechnung, die zeigt, dass man der Bahn trauen darf."
+  },
+  {
+   "name": "Phasen zu dritt: Pythagoras bis t = 70",
+   "art": "phasen",
+   "G": 1.0,
+   "t_ende": 70.0,
+   "rtol": 1e-12,
+   "atol": 1e-14,
+   "massen": [
+    3,
+    4,
+    5
+   ],
+   "r0": [
+    [
+     1.0,
+     3.0,
+     0.0
+    ],
+    [
+     -2.0,
+     -1.0,
+     0.0
+    ],
+    [
+     1.0,
+     -1.0,
+     0.0
+    ]
+   ],
+   "v0": [
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ]
+   ],
+   "radien": [
+    0.0001,
+    0.0001,
+    0.0001
+   ],
+   "phasen_python": [
+    [
+     1.78,
+     35.364
+    ],
+    [
+     40.753,
+     47.628
+    ],
+    [
+     58.854,
+     59.72
+    ]
+   ],
+   "anteil_python": 0.59,
+   "toleranz_zeit": 0.05,
+   "warum": "Phils Maß (Briefe 16–18): engstes Paar, a aus seiner Energie, Eintritt d < 2a, Austritt d > 3a, Zusammenlegen bei einer Lücke unter der inneren Umlaufzeit. Pythagoras ist 59 % der Zeit ohne festes Paar, in drei Phasen. Maßstab: Phils dreier_begegnungen.json (DOP853 1e-12), Armins Gegenrechnung (1e-13) liegt auf 0,01 gleich. Toleranz 0,05, weil die Bahn nach t = 50 chaotisch auseinanderläuft."
+  },
+  {
+   "name": "Phasen zu dritt: Der Dritte, v = 0,5, bis t = 300",
+   "art": "phasen",
+   "G": 1.0,
+   "t_ende": 300.0,
+   "rtol": 1e-12,
+   "atol": 1e-14,
+   "massen": [
+    1.0,
+    1.0,
+    1.0
+   ],
+   "r0": [
+    [
+     3.5,
+     -0.5,
+     0.0
+    ],
+    [
+     4.5,
+     -0.5,
+     0.0
+    ],
+    [
+     -8.0,
+     1.0,
+     0.0
+    ]
+   ],
+   "v0": [
+    [
+     -0.16666666666666666,
+     -0.7071067811865476,
+     0.0
+    ],
+    [
+     -0.16666666666666666,
+     0.7071067811865476,
+     0.0
+    ],
+    [
+     0.33333333333333337,
+     0.0,
+     0.0
+    ]
+   ],
+   "radien": [
+    0.002,
+    0.002,
+    0.002
+   ],
+   "phasen_python": [
+    [
+     13.097,
+     14.535
+    ]
+   ],
+   "anteil_python": 0.005,
+   "toleranz_zeit": 0.01,
+   "warum": "Einmal zu dritt, nur beim Austausch (t ≈ 13,1 bis 14,5), danach 285 Zeiteinheiten ein festes Paar mit fernem Drittem, trotz 273 enger Durchgänge des Paars. Das ist der Grund, warum diese Bahn verlässlich ist und Pythagoras nicht (Phil, Brief 18)."
+  },
+  {
+   "name": "Phasen zu dritt: die Acht, 5 Umläufe",
+   "art": "phasen",
+   "G": 1.0,
+   "t_ende": 31.6295,
+   "rtol": 1e-10,
+   "atol": 1e-12,
+   "massen": [
+    1,
+    1,
+    1
+   ],
+   "r0": [
+    [
+     0.97000436,
+     -0.24308753,
+     0.0
+    ],
+    [
+     -0.97000436,
+     0.24308753,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ]
+   ],
+   "v0": [
+    [
+     0.466203685,
+     0.43236573,
+     0.0
+    ],
+    [
+     0.466203685,
+     0.43236573,
+     0.0
+    ],
+    [
+     -0.93240737,
+     -0.86473146,
+     0.0
+    ]
+   ],
+   "radien": [
+    0.01,
+    0.01,
+    0.01
+   ],
+   "phasen_python": [
+    [
+     0.0,
+     31.63
+    ]
+   ],
+   "anteil_python": 1.0,
+   "toleranz_zeit": 0.001,
+   "warum": "Die Acht ist von Anfang bis Ende ohne festes Paar: eine einzige Phase über die ganze Zeit."
+  }
+ ]
+}

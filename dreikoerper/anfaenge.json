@@ -1,0 +1,929 @@
+{
+ "_kopf": {
+  "datei": "anfaenge.json",
+  "autor": "Philip, 08.10.2026",
+  "fuer": "dreikoerper_seite (Armin); Tooltip-Texte je Körper im Feld tooltip; Zustände im Schwerpunktsystem, z = 0; radius nach Prüfblatt 06 nie 0",
+  "hinweis": "Für Anfänge mit Regler enthält rastpunkte_zustaende die fertigen Zustände je Rastpunkt; koerper ist die Vorgabe.",
+  "aenderungen": "09.10.2026, Philip: pythagoras radius 0,01 -> 0,0001 (alle drei), Begründung im Feld was_man_sieht; Armin erneuert die Kopie in dreikoerper_seite. | 11.10.2026, Philip: Vorname der Postbotin an zwei Stellen (titel, quelle von der_dritte_kommt) durch den Hausnamen ersetzt (Hausregel 09.10.); Armin erneuert die Kopie."
+ },
+ "anfaenge": [
+  {
+   "id": "zwei_sterne",
+   "titel": "Zwei Sterne: die Kepler-Ellipse",
+   "G": 1,
+   "einheiten": "G = 1, Massen 1, frei",
+   "dt_leapfrog": 0.001,
+   "t_umlauf": 4.442882938158366,
+   "was_man_sieht": "Zwei gleiche Sterne auf zwei Ellipsen um den gemeinsamen Schwerpunkt, Exzentrizität 0,5. Die Bahn schließt sich, die Energie bleibt flach: Das ist der Prüfstein, dass die Schleife stimmt. Mit Euler statt Bocksprung spiralt sie nach außen.",
+   "quelle": "Kepler 1609 (Astronomia nova); Newton 1687. Zahlen: Apastron a(1+e) = 1,5, Umlaufzeit 2π·sqrt(a³/(G·M)) = 4,443.",
+   "koerper": [
+    {
+     "name": "A",
+     "m": 1,
+     "r": [
+      -0.75,
+      0.0,
+      0.0
+     ],
+     "v": [
+      0.0,
+      -0.408248290463863,
+      0.0
+     ],
+     "radius": 0.01,
+     "tooltip": "Stern A, Masse 1. Er umläuft nicht B, sondern den gemeinsamen Schwerpunkt (das Kreuz), auf einer Ellipse mit Exzentrizität 0,5; B tut dasselbe, spiegelbildlich. Beide zusammen sind ein Zweikörperproblem, das einzige mit Formel: Kepler."
+    },
+    {
+     "name": "B",
+     "m": 1,
+     "r": [
+      0.75,
+      0.0,
+      0.0
+     ],
+     "v": [
+      0.0,
+      0.408248290463863,
+      0.0
+     ],
+     "radius": 0.01,
+     "tooltip": "Stern B, Masse 1. Im Apastron (jetzt) ist er am langsamsten, im Periastron dreimal so schnell: Flächensatz, Drehimpuls bleibt. Die Gleichung dahinter steht unter Frage 1; hier ist die innere Schleife nur ein Glied lang."
+    }
+   ]
+  },
+  {
+   "id": "die_acht",
+   "titel": "Die Acht (Chenciner und Montgomery)",
+   "G": 1,
+   "einheiten": "G = 1, Massen 1",
+   "dt_leapfrog": 0.001,
+   "t_umlauf": 6.3259,
+   "was_man_sieht": "Drei gleiche Sterne jagen einander auf einer einzigen Achterbahn, gleichmäßig versetzt. Sie ist periodisch und stabil gegen kleine Störungen, eine Seltenheit im Dreikörperproblem. Mit Euler läuft sie davon, mit dem Bocksprung bleibt sie (Bild 1 des Blatts).",
+   "quelle": "A. Chenciner, R. Montgomery, Annals of Mathematics 152 (2000) 881; Zahlen nach C. Simó (2000); Vorzeichen wie im Rechenkern von Armin (30.09.2026). Umlaufzeit 6,3259.",
+   "koerper": [
+    {
+     "name": "1",
+     "m": 1,
+     "r": [
+      0.97000436,
+      -0.24308753,
+      0.0
+     ],
+     "v": [
+      0.466203685,
+      0.43236573,
+      0.0
+     ],
+     "radius": 0.01,
+     "tooltip": "Einer von drei gleichen Sternen. Alle drei durchlaufen dieselbe Achterkurve, jeder ein Drittel Umlauf hinter dem nächsten. Gefunden 1993 von Cris Moore numerisch, 2000 von Chenciner und Montgomery bewiesen."
+    },
+    {
+     "name": "2",
+     "m": 1,
+     "r": [
+      -0.97000436,
+      0.24308753,
+      0.0
+     ],
+     "v": [
+      0.466203685,
+      0.43236573,
+      0.0
+     ],
+     "radius": 0.01,
+     "tooltip": "Der zweite Stern. Die Acht ist eine sogenannte Choreographie: Zu jeder Zeit sind Schwerpunkt und Drehimpuls null; die Energie bleibt, wenn der Rechner ehrlich ist (Kurve rechts)."
+    },
+    {
+     "name": "3",
+     "m": 1,
+     "r": [
+      0.0,
+      0.0,
+      0.0
+     ],
+     "v": [
+      -0.93240737,
+      -0.86473146,
+      0.0
+     ],
+     "radius": 0.01,
+     "tooltip": "Der dritte Stern, der im Kreuzungspunkt startet. Störe seine Geschwindigkeit um ein Tausendstel: Die Acht überlebt eine Weile, dann nicht mehr. Das ist der Unterschied zwischen stabil und periodisch."
+    }
+   ]
+  },
+  {
+   "id": "lagrange_dreieck",
+   "titel": "Lagranges gleichseitiges Dreieck",
+   "G": 1,
+   "einheiten": "G = 1, Massen 1, Seitenlänge 1",
+   "dt_leapfrog": 0.001,
+   "t_umlauf": 3.627598728468436,
+   "was_man_sieht": "Drei gleiche Sterne an den Ecken eines gleichseitigen Dreiecks, das sich als Ganzes dreht; jeder läuft auf einem Kreis. Eine exakte Lösung, aber instabil: Die Rundungsfehler des Rechners genügen, nach einigen Umläufen bricht das Dreieck auseinander. Genau das soll man sehen.",
+   "quelle": "J.-L. Lagrange, Essai sur le problème des trois corps (1772). Geschwindigkeit v = sqrt(G·m/d) = 1 für gleiche Massen; Kreisradius d/√3.",
+   "koerper": [
+    {
+     "name": "1",
+     "m": 1,
+     "r": [
+      3.53525079574969e-17,
+      0.5773502691896258,
+      0.0
+     ],
+     "v": [
+      -1.0,
+      6.123233995736766e-17,
+      0.0
+     ],
+     "radius": 0.01,
+     "tooltip": "Ecke des Dreiecks. Die Anziehung der beiden anderen zeigt genau zur Mitte und ist genau so groß, wie die Kreisbahn es braucht: eine Lösung von Lagrange, 1772, lange bevor man wusste, dass es sonst keine Formel gibt."
+    },
+    {
+     "name": "2",
+     "m": 1,
+     "r": [
+      -0.5000000000000001,
+      -0.28867513459481275,
+      0.0
+     ],
+     "v": [
+      0.4999999999999997,
+      -0.8660254037844388,
+      0.0
+     ],
+     "radius": 0.01,
+     "tooltip": "Zweite Ecke. Dieselbe Anordnung mit einem schweren und zwei leichten Körpern ist stabil: Jupiters Trojaner sitzen so. Mit drei gleichen Massen ist sie es nicht; die Energie bleibt trotzdem flach, der Rechner lügt nicht, die Lösung ist nur empfindlich."
+    },
+    {
+     "name": "3",
+     "m": 1,
+     "r": [
+      0.4999999999999999,
+      -0.2886751345948132,
+      0.0
+     ],
+     "v": [
+      0.5000000000000004,
+      0.8660254037844384,
+      0.0
+     ],
+     "radius": 0.01,
+     "tooltip": "Dritte Ecke. Beobachte, nach wie vielen Umläufen das Dreieck kippt; mit kleinerem dt dauert es länger, mit Störung kürzer. Instabilität ist hier Physik, nicht Rechenfehler."
+    }
+   ]
+  },
+  {
+   "id": "pythagoras",
+   "titel": "Pythagoras 3-4-5 (Burrau)",
+   "G": 1,
+   "einheiten": "G = 1, Massen 3, 4, 5",
+   "dt_leapfrog": 0.0005,
+   "t_umlauf": null,
+   "t_ende": 70,
+   "was_man_sieht": "Massen 3, 4 und 5 an den Ecken eines rechtwinkligen Dreiecks mit den Seiten 3, 4, 5, aus der Ruhe losgelassen. Ein Gewirr enger Begegnungen; nach etwa t = 60 fliegt die Masse 3 hinaus, 4 und 5 bleiben als Paar. Zwei Läufe, um 10⁻¹⁰ verschoben, trennen sich treppenförmig (Bild 2 des Blatts). Adaptiver Schritt nötig. Radius 0,0001 je Körper (09.10., nach Armins Begegnungsliste): die engste Begegnung ist 0,000414 bei t = 15,83; mit Radius 0,01 bräche der Lauf schon bei t = 1,879 ab, und man sähe den Hinauswurf nie.",
+   "quelle": "C. Burrau, Astronomische Nachrichten 195 (1913) 113; Ausgang: V. Szebehely, C. F. Peters, Astronomical Journal 72 (1967) 876. Drehimpuls ist null (Start aus der Ruhe); der Wächter zeigt dann den absoluten Fehler.",
+   "koerper": [
+    {
+     "name": "3",
+     "m": 3,
+     "r": [
+      1.0,
+      3.0,
+      0.0
+     ],
+     "v": [
+      0.0,
+      0.0,
+      0.0
+     ],
+     "radius": 0.0001,
+     "tooltip": "Die leichteste Masse, 3. Sie wird am Ende hinausgeworfen: Bei engen Begegnungen trägt meist der Leichteste die Energie davon. Das ist die Regel, die auch Proxima in Bild 3 trifft."
+    },
+    {
+     "name": "4",
+     "m": 4,
+     "r": [
+      -2.0,
+      -1.0,
+      0.0
+     ],
+     "v": [
+      0.0,
+      0.0,
+      0.0
+     ],
+     "radius": 0.0001,
+     "tooltip": "Masse 4. Sie bleibt mit der 5 als enges Paar zurück, das in die Gegenrichtung des Ausreißers davonfliegt; Impuls bleibt, Schwerpunkt bleibt im Kreuz."
+    },
+    {
+     "name": "5",
+     "m": 5,
+     "r": [
+      1.0,
+      -1.0,
+      0.0
+     ],
+     "v": [
+      0.0,
+      0.0,
+      0.0
+     ],
+     "radius": 0.0001,
+     "tooltip": "Die schwerste Masse, 5. Zwischen t = 0 und 60 ist nichts vorhersagbar, obwohl alles deterministisch ist: Chaos heißt, dass die Rundung des Rechners schon eine Störung ist, die das System vergrößert."
+    }
+   ]
+  },
+  {
+   "id": "alpha_centauri",
+   "titel": "Alpha Centauri, und Proxima heranschieben",
+   "G": 39.47841760435743,
+   "einheiten": "Sonnenmassen, AE, Jahre; G = 4π²",
+   "dt_leapfrog": 0.005,
+   "t_umlauf": 79.762,
+   "regler": {
+    "parameter": "a_out_AE",
+    "beschriftung": "Halbachse von Proximas Bahn um das Paar (AE)",
+    "von": 80,
+    "bis": 13000,
+    "logarithmisch": true,
+    "rastpunkte": [
+     13000,
+     1000,
+     300,
+     150,
+     120,
+     100,
+     80
+    ],
+    "vorgabe": 13000
+   },
+   "was_man_sieht": "Das echte System: A und B auf ihrer 80-Jahre-Ellipse, Proxima so weit draußen, dass sie in 2000 Jahren um anderthalb Grad weiterrückt. Schiebt man sie heran (Regler), bleibt das Paar bis etwa 120 AE unversehrt; bei 100 AE kommt Proxima bis auf 14 AE heran und fliegt mit 7000 AE davon; bei 80 AE wird das Paar bis 60 AE auseinandergezogen, und wieder ist Proxima die, die geht.",
+   "quelle": "Akeson et al. 2021 (Periode 79,762 a, a = 23,299 AE, e = 0,5195, Massen 1,0788 und 0,9092 Sonnenmassen); Kervella & Thévenin 2017 (Proxima 0,1221 Sonnenmassen); alle nach en.wikipedia.org/wiki/Alpha_Centauri, abgerufen 04.10.2026. Läufe: alpha_centauri.py, alpha_centauri_lang.json (Philip, 04.10.). Alles in einer Ebene; Proximas wirkliche Bahn liegt schräg.",
+   "rastpunkte_zustaende": [
+    {
+     "a_out_AE": 13000,
+     "koerper": [
+      {
+       "name": "A",
+       "m": 1.0788,
+       "r": [
+        -16.1912743916499,
+        -1128.3588455523434,
+        0.0
+       ],
+       "v": [
+        0.0026743097645422465,
+        -0.4720182696393267,
+        0.0
+       ],
+       "radius": 0.00465,
+       "tooltip": "Alpha Centauri A, 1,08 Sonnenmassen, der hellere Stern. A und B umkreisen den gemeinsamen Schwerpunkt in 79,8 Jahren, zwischen 11 und 36 AE (Akeson et al. 2021). Proxima ist für die beiden fast nur Zuschauerin."
+      },
+      {
+       "name": "B",
+       "m": 0.9092,
+       "r": [
+        19.211556108350095,
+        -1128.3588455523434,
+        0.0
+       ],
+       "v": [
+        0.0026743097645422465,
+        0.5600674321237413,
+        0.0
+       ],
+       "radius": 0.00465,
+       "tooltip": "Alpha Centauri B, 0,91 Sonnenmassen. Die Ellipse hat Exzentrizität 0,52; im Periastron (Mai 2035) sind sich A und B so nah wie Saturn der Sonne. Ein Zweikörperproblem, in Wirklichkeit."
+      },
+      {
+       "name": "Proxima",
+       "m": 0.1221,
+       "r": [
+        0.0,
+        18371.641154447658,
+        0.0
+       ],
+       "v": [
+        -0.04354240632194911,
+        0.0,
+        0.0
+       ],
+       "radius": 0.00465,
+       "tooltip": "Proxima, 0,12 Sonnenmassen, in Wirklichkeit 13 000 AE weit draußen, ein Umlauf dauert 511 000 Jahre. Der Regler schiebt sie heran: Unter etwa 100 bis 120 AE kippt es, und wer kippt, ist Proxima, sie wird hinausgeworfen, das Paar bleibt (Bild 3 des Blatts)."
+      }
+     ]
+    },
+    {
+     "a_out_AE": 1000,
+     "koerper": [
+      {
+       "name": "A",
+       "m": 1.0788,
+       "r": [
+        -16.1912743916499,
+        -86.79683427325719,
+        0.0
+       ],
+       "v": [
+        0.009642360982531099,
+        -0.4720182696393267,
+        0.0
+       ],
+       "radius": 0.00465,
+       "tooltip": "Alpha Centauri A, 1,08 Sonnenmassen, der hellere Stern. A und B umkreisen den gemeinsamen Schwerpunkt in 79,8 Jahren, zwischen 11 und 36 AE (Akeson et al. 2021). Proxima ist für die beiden fast nur Zuschauerin."
+      },
+      {
+       "name": "B",
+       "m": 0.9092,
+       "r": [
+        19.211556108350095,
+        -86.79683427325719,
+        0.0
+       ],
+       "v": [
+        0.009642360982531099,
+        0.5600674321237413,
+        0.0
+       ],
+       "radius": 0.00465,
+       "tooltip": "Alpha Centauri B, 0,91 Sonnenmassen. Die Ellipse hat Exzentrizität 0,52; im Periastron (Mai 2035) sind sich A und B so nah wie Saturn der Sonne. Ein Zweikörperproblem, in Wirklichkeit."
+      },
+      {
+       "name": "Proxima",
+       "m": 0.1221,
+       "r": [
+        0.0,
+        1413.2031657267428,
+        0.0
+       ],
+       "v": [
+        -0.1569943786508749,
+        0.0,
+        0.0
+       ],
+       "radius": 0.00465,
+       "tooltip": "Proxima, 0,12 Sonnenmassen, in Wirklichkeit 13 000 AE weit draußen, ein Umlauf dauert 511 000 Jahre. Der Regler schiebt sie heran: Unter etwa 100 bis 120 AE kippt es, und wer kippt, ist Proxima, sie wird hinausgeworfen, das Paar bleibt (Bild 3 des Blatts)."
+      }
+     ]
+    },
+    {
+     "a_out_AE": 300,
+     "koerper": [
+      {
+       "name": "A",
+       "m": 1.0788,
+       "r": [
+        -16.1912743916499,
+        -26.039050281977154,
+        0.0
+       ],
+       "v": [
+        0.017604462059133196,
+        -0.4720182696393267,
+        0.0
+       ],
+       "radius": 0.00465,
+       "tooltip": "Alpha Centauri A, 1,08 Sonnenmassen, der hellere Stern. A und B umkreisen den gemeinsamen Schwerpunkt in 79,8 Jahren, zwischen 11 und 36 AE (Akeson et al. 2021). Proxima ist für die beiden fast nur Zuschauerin."
+      },
+      {
+       "name": "B",
+       "m": 0.9092,
+       "r": [
+        19.211556108350095,
+        -26.039050281977154,
+        0.0
+       ],
+       "v": [
+        0.017604462059133196,
+        0.5600674321237413,
+        0.0
+       ],
+       "radius": 0.00465,
+       "tooltip": "Alpha Centauri B, 0,91 Sonnenmassen. Die Ellipse hat Exzentrizität 0,52; im Periastron (Mai 2035) sind sich A und B so nah wie Saturn der Sonne. Ein Zweikörperproblem, in Wirklichkeit."
+      },
+      {
+       "name": "Proxima",
+       "m": 0.1221,
+       "r": [
+        0.0,
+        423.96094971802285,
+        0.0
+       ],
+       "v": [
+        -0.28663120862863883,
+        0.0,
+        0.0
+       ],
+       "radius": 0.00465,
+       "tooltip": "Proxima, 0,12 Sonnenmassen, in Wirklichkeit 13 000 AE weit draußen, ein Umlauf dauert 511 000 Jahre. Der Regler schiebt sie heran: Unter etwa 100 bis 120 AE kippt es, und wer kippt, ist Proxima, sie wird hinausgeworfen, das Paar bleibt (Bild 3 des Blatts)."
+      }
+     ]
+    },
+    {
+     "a_out_AE": 150,
+     "koerper": [
+      {
+       "name": "A",
+       "m": 1.0788,
+       "r": [
+        -16.1912743916499,
+        -13.019525140988577,
+        0.0
+       ],
+       "v": [
+        0.024896469002308755,
+        -0.4720182696393267,
+        0.0
+       ],
+       "radius": 0.00465,
+       "tooltip": "Alpha Centauri A, 1,08 Sonnenmassen, der hellere Stern. A und B umkreisen den gemeinsamen Schwerpunkt in 79,8 Jahren, zwischen 11 und 36 AE (Akeson et al. 2021). Proxima ist für die beiden fast nur Zuschauerin."
+      },
+      {
+       "name": "B",
+       "m": 0.9092,
+       "r": [
+        19.211556108350095,
+        -13.019525140988577,
+        0.0
+       ],
+       "v": [
+        0.024896469002308755,
+        0.5600674321237413,
+        0.0
+       ],
+       "radius": 0.00465,
+       "tooltip": "Alpha Centauri B, 0,91 Sonnenmassen. Die Ellipse hat Exzentrizität 0,52; im Periastron (Mai 2035) sind sich A und B so nah wie Saturn der Sonne. Ein Zweikörperproblem, in Wirklichkeit."
+      },
+      {
+       "name": "Proxima",
+       "m": 0.1221,
+       "r": [
+        0.0,
+        211.98047485901142,
+        0.0
+       ],
+       "v": [
+        -0.4053577426420132,
+        0.0,
+        0.0
+       ],
+       "radius": 0.00465,
+       "tooltip": "Proxima, 0,12 Sonnenmassen, in Wirklichkeit 13 000 AE weit draußen, ein Umlauf dauert 511 000 Jahre. Der Regler schiebt sie heran: Unter etwa 100 bis 120 AE kippt es, und wer kippt, ist Proxima, sie wird hinausgeworfen, das Paar bleibt (Bild 3 des Blatts)."
+      }
+     ]
+    },
+    {
+     "a_out_AE": 120,
+     "koerper": [
+      {
+       "name": "A",
+       "m": 1.0788,
+       "r": [
+        -16.1912743916499,
+        -10.415620112790862,
+        0.0
+       ],
+       "v": [
+        0.027835098544439368,
+        -0.4720182696393267,
+        0.0
+       ],
+       "radius": 0.00465,
+       "tooltip": "Alpha Centauri A, 1,08 Sonnenmassen, der hellere Stern. A und B umkreisen den gemeinsamen Schwerpunkt in 79,8 Jahren, zwischen 11 und 36 AE (Akeson et al. 2021). Proxima ist für die beiden fast nur Zuschauerin."
+      },
+      {
+       "name": "B",
+       "m": 0.9092,
+       "r": [
+        19.211556108350095,
+        -10.415620112790862,
+        0.0
+       ],
+       "v": [
+        0.027835098544439368,
+        0.5600674321237413,
+        0.0
+       ],
+       "radius": 0.00465,
+       "tooltip": "Alpha Centauri B, 0,91 Sonnenmassen. Die Ellipse hat Exzentrizität 0,52; im Periastron (Mai 2035) sind sich A und B so nah wie Saturn der Sonne. Ein Zweikörperproblem, in Wirklichkeit."
+      },
+      {
+       "name": "Proxima",
+       "m": 0.1221,
+       "r": [
+        0.0,
+        169.58437988720914,
+        0.0
+       ],
+       "v": [
+        -0.45320373387670326,
+        0.0,
+        0.0
+       ],
+       "radius": 0.00465,
+       "tooltip": "Proxima, 0,12 Sonnenmassen, in Wirklichkeit 13 000 AE weit draußen, ein Umlauf dauert 511 000 Jahre. Der Regler schiebt sie heran: Unter etwa 100 bis 120 AE kippt es, und wer kippt, ist Proxima, sie wird hinausgeworfen, das Paar bleibt (Bild 3 des Blatts)."
+      }
+     ]
+    },
+    {
+     "a_out_AE": 100,
+     "koerper": [
+      {
+       "name": "A",
+       "m": 1.0788,
+       "r": [
+        -16.1912743916499,
+        -8.679683427325719,
+        0.0
+       ],
+       "v": [
+        0.03049182272633732,
+        -0.4720182696393267,
+        0.0
+       ],
+       "radius": 0.00465,
+       "tooltip": "Alpha Centauri A, 1,08 Sonnenmassen, der hellere Stern. A und B umkreisen den gemeinsamen Schwerpunkt in 79,8 Jahren, zwischen 11 und 36 AE (Akeson et al. 2021). Proxima ist für die beiden fast nur Zuschauerin."
+      },
+      {
+       "name": "B",
+       "m": 0.9092,
+       "r": [
+        19.211556108350095,
+        -8.679683427325719,
+        0.0
+       ],
+       "v": [
+        0.03049182272633732,
+        0.5600674321237413,
+        0.0
+       ],
+       "radius": 0.00465,
+       "tooltip": "Alpha Centauri B, 0,91 Sonnenmassen. Die Ellipse hat Exzentrizität 0,52; im Periastron (Mai 2035) sind sich A und B so nah wie Saturn der Sonne. Ein Zweikörperproblem, in Wirklichkeit."
+      },
+      {
+       "name": "Proxima",
+       "m": 0.1221,
+       "r": [
+        0.0,
+        141.32031657267427,
+        0.0
+       ],
+       "v": [
+        -0.4964598163796773,
+        0.0,
+        0.0
+       ],
+       "radius": 0.00465,
+       "tooltip": "Proxima, 0,12 Sonnenmassen, in Wirklichkeit 13 000 AE weit draußen, ein Umlauf dauert 511 000 Jahre. Der Regler schiebt sie heran: Unter etwa 100 bis 120 AE kippt es, und wer kippt, ist Proxima, sie wird hinausgeworfen, das Paar bleibt (Bild 3 des Blatts)."
+      }
+     ]
+    },
+    {
+     "a_out_AE": 80,
+     "koerper": [
+      {
+       "name": "A",
+       "m": 1.0788,
+       "r": [
+        -16.1912743916499,
+        -6.943746741860575,
+        0.0
+       ],
+       "v": [
+        0.03409089418698161,
+        -0.4720182696393267,
+        0.0
+       ],
+       "radius": 0.00465,
+       "tooltip": "Alpha Centauri A, 1,08 Sonnenmassen, der hellere Stern. A und B umkreisen den gemeinsamen Schwerpunkt in 79,8 Jahren, zwischen 11 und 36 AE (Akeson et al. 2021). Proxima ist für die beiden fast nur Zuschauerin."
+      },
+      {
+       "name": "B",
+       "m": 0.9092,
+       "r": [
+        19.211556108350095,
+        -6.943746741860575,
+        0.0
+       ],
+       "v": [
+        0.03409089418698161,
+        0.5600674321237413,
+        0.0
+       ],
+       "radius": 0.00465,
+       "tooltip": "Alpha Centauri B, 0,91 Sonnenmassen. Die Ellipse hat Exzentrizität 0,52; im Periastron (Mai 2035) sind sich A und B so nah wie Saturn der Sonne. Ein Zweikörperproblem, in Wirklichkeit."
+      },
+      {
+       "name": "Proxima",
+       "m": 0.1221,
+       "r": [
+        0.0,
+        113.05625325813942,
+        0.0
+       ],
+       "v": [
+        -0.5550589487610109,
+        0.0,
+        0.0
+       ],
+       "radius": 0.00465,
+       "tooltip": "Proxima, 0,12 Sonnenmassen, in Wirklichkeit 13 000 AE weit draußen, ein Umlauf dauert 511 000 Jahre. Der Regler schiebt sie heran: Unter etwa 100 bis 120 AE kippt es, und wer kippt, ist Proxima, sie wird hinausgeworfen, das Paar bleibt (Bild 3 des Blatts)."
+      }
+     ]
+    }
+   ],
+   "koerper": [
+    {
+     "name": "A",
+     "m": 1.0788,
+     "r": [
+      -16.1912743916499,
+      -1128.3588455523434,
+      0.0
+     ],
+     "v": [
+      0.0026743097645422465,
+      -0.4720182696393267,
+      0.0
+     ],
+     "radius": 0.00465,
+     "tooltip": "Alpha Centauri A, 1,08 Sonnenmassen, der hellere Stern. A und B umkreisen den gemeinsamen Schwerpunkt in 79,8 Jahren, zwischen 11 und 36 AE (Akeson et al. 2021). Proxima ist für die beiden fast nur Zuschauerin."
+    },
+    {
+     "name": "B",
+     "m": 0.9092,
+     "r": [
+      19.211556108350095,
+      -1128.3588455523434,
+      0.0
+     ],
+     "v": [
+      0.0026743097645422465,
+      0.5600674321237413,
+      0.0
+     ],
+     "radius": 0.00465,
+     "tooltip": "Alpha Centauri B, 0,91 Sonnenmassen. Die Ellipse hat Exzentrizität 0,52; im Periastron (Mai 2035) sind sich A und B so nah wie Saturn der Sonne. Ein Zweikörperproblem, in Wirklichkeit."
+    },
+    {
+     "name": "Proxima",
+     "m": 0.1221,
+     "r": [
+      0.0,
+      18371.641154447658,
+      0.0
+     ],
+     "v": [
+      -0.04354240632194911,
+      0.0,
+      0.0
+     ],
+     "radius": 0.00465,
+     "tooltip": "Proxima, 0,12 Sonnenmassen, in Wirklichkeit 13 000 AE weit draußen, ein Umlauf dauert 511 000 Jahre. Der Regler schiebt sie heran: Unter etwa 100 bis 120 AE kippt es, und wer kippt, ist Proxima, sie wird hinausgeworfen, das Paar bleibt (Bild 3 des Blatts)."
+    }
+   ]
+  },
+  {
+   "id": "der_dritte_kommt",
+   "titel": "Der Dritte kommt (der Anfang der Postbotin)",
+   "G": 1,
+   "einheiten": "G = 1, Massen 1",
+   "dt_leapfrog": 0.001,
+   "t_umlauf": 4.442882938158366,
+   "t_ende": 300,
+   "regler": {
+    "parameter": "v",
+    "beschriftung": "Einflugsgeschwindigkeit des Dritten",
+    "von": 0.3,
+    "bis": 2.0,
+    "schritt": 0.05,
+    "rastpunkte": [
+     0.85,
+     1.25,
+     1.6
+    ],
+    "vorgabe": 1.25,
+    "stossparameter_b": 1.5,
+    "start_x": -12
+   },
+   "was_man_sieht": "Ein Paar auf seiner Kreisbahn, ein dritter Stern fliegt von links herein. Mit dem Regler für seine Geschwindigkeit sieht man alle Ausgänge des Dreikörperproblems an einem einzigen Anfang: Einfang (0,85), Austausch, einer vom Paar fliegt hinaus (1,15 bis 1,35), Vorbeiflug (ab 1,4). Unter 1,1 ist der Ausgang chaotisch und wechselt von Schritt zu Schritt; Zusammenstöße (Abstand unter 0,004) werden gemeldet.",
+   "quelle": "Erste Fassung der Postbotin in der Besprechung vom 06.10.2026 (der dritte im Ankommen von seinem Orbit); Zahlen aus der_dritte_kommt.py (Philip, 08.10.2026, DOP853, 35 Geschwindigkeiten je Stoßparameter, b = 1,0 / 1,5 / 2,0; Ausgangskarte in der_dritte_kommt_ausgaenge.json). Zur Physik: J. G. Hills 1975 (Austausch bei Stern-Paar-Begegnungen).",
+   "rastpunkte_zustaende": [
+    {
+     "v": 0.85,
+     "ausgang": "Einfang",
+     "erklaerung": "Der Dritte wird eingefangen; alle drei bleiben eine Weile beisammen (bei t = 300 noch nicht entschieden). Solche Dreier halten nicht ewig, irgendwann fliegt einer.",
+     "koerper": [
+      {
+       "name": "A",
+       "m": 1,
+       "r": [
+        3.5,
+        -0.5,
+        0.0
+       ],
+       "v": [
+        -0.2833333333333333,
+        -0.7071067811865476,
+        0.0
+       ],
+       "radius": 0.002,
+       "tooltip": "Stern A des Paars, Masse 1, Kreisbahn mit Abstand 1 zu B. Bis der Dritte kommt, ein Zweikörperproblem mit Formel; danach nicht mehr."
+      },
+      {
+       "name": "B",
+       "m": 1,
+       "r": [
+        4.5,
+        -0.5,
+        0.0
+       ],
+       "v": [
+        -0.2833333333333333,
+        0.7071067811865476,
+        0.0
+       ],
+       "radius": 0.002,
+       "tooltip": "Stern B des Paars. Ob er am Ende bei A bleibt, entscheidet die Begegnung mit dem Dritten; bei Austausch ist es A oder B, der geht, und das ist bei gleichen Massen Zufall im Sinne von: empfindlich auf die zehnte Stelle."
+      },
+      {
+       "name": "Der Dritte",
+       "m": 1,
+       "r": [
+        -8.0,
+        1.0,
+        0.0
+       ],
+       "v": [
+        0.5666666666666667,
+        0.0,
+        0.0
+       ],
+       "radius": 0.002,
+       "tooltip": "Der Dritte, Masse 1, kommt von links mit der Geschwindigkeit des Reglers und Stoßparameter 1,5. Langsam: Einfang. Mittel: Austausch, einer vom Paar fliegt. Schnell: Vorbeiflug. Unter etwa 1,1 ist die Spanne chaotisch, Zusammenstöße kommen vor und werden gemeldet, nicht weggerechnet."
+      }
+     ]
+    },
+    {
+     "v": 1.25,
+     "ausgang": "Hinauswurf",
+     "erklaerung": "Einer vom Paar fliegt hinaus, der Dritte nimmt seinen Platz: Austausch. In der Spanne 1,15 bis 1,35 ist das der Regelfall.",
+     "koerper": [
+      {
+       "name": "A",
+       "m": 1,
+       "r": [
+        3.5,
+        -0.5,
+        0.0
+       ],
+       "v": [
+        -0.4166666666666667,
+        -0.7071067811865476,
+        0.0
+       ],
+       "radius": 0.002,
+       "tooltip": "Stern A des Paars, Masse 1, Kreisbahn mit Abstand 1 zu B. Bis der Dritte kommt, ein Zweikörperproblem mit Formel; danach nicht mehr."
+      },
+      {
+       "name": "B",
+       "m": 1,
+       "r": [
+        4.5,
+        -0.5,
+        0.0
+       ],
+       "v": [
+        -0.4166666666666667,
+        0.7071067811865476,
+        0.0
+       ],
+       "radius": 0.002,
+       "tooltip": "Stern B des Paars. Ob er am Ende bei A bleibt, entscheidet die Begegnung mit dem Dritten; bei Austausch ist es A oder B, der geht, und das ist bei gleichen Massen Zufall im Sinne von: empfindlich auf die zehnte Stelle."
+      },
+      {
+       "name": "Der Dritte",
+       "m": 1,
+       "r": [
+        -8.0,
+        1.0,
+        0.0
+       ],
+       "v": [
+        0.8333333333333333,
+        0.0,
+        0.0
+       ],
+       "radius": 0.002,
+       "tooltip": "Der Dritte, Masse 1, kommt von links mit der Geschwindigkeit des Reglers und Stoßparameter 1,5. Langsam: Einfang. Mittel: Austausch, einer vom Paar fliegt. Schnell: Vorbeiflug. Unter etwa 1,1 ist die Spanne chaotisch, Zusammenstöße kommen vor und werden gemeldet, nicht weggerechnet."
+      }
+     ]
+    },
+    {
+     "v": 1.6,
+     "ausgang": "Vorbeiflug",
+     "erklaerung": "Der Dritte ist zu schnell, er zieht am Paar vorbei und lässt es gestört, aber zusammen zurück. Ab etwa 1,4 immer.",
+     "koerper": [
+      {
+       "name": "A",
+       "m": 1,
+       "r": [
+        3.5,
+        -0.5,
+        0.0
+       ],
+       "v": [
+        -0.5333333333333333,
+        -0.7071067811865476,
+        0.0
+       ],
+       "radius": 0.002,
+       "tooltip": "Stern A des Paars, Masse 1, Kreisbahn mit Abstand 1 zu B. Bis der Dritte kommt, ein Zweikörperproblem mit Formel; danach nicht mehr."
+      },
+      {
+       "name": "B",
+       "m": 1,
+       "r": [
+        4.5,
+        -0.5,
+        0.0
+       ],
+       "v": [
+        -0.5333333333333333,
+        0.7071067811865476,
+        0.0
+       ],
+       "radius": 0.002,
+       "tooltip": "Stern B des Paars. Ob er am Ende bei A bleibt, entscheidet die Begegnung mit dem Dritten; bei Austausch ist es A oder B, der geht, und das ist bei gleichen Massen Zufall im Sinne von: empfindlich auf die zehnte Stelle."
+      },
+      {
+       "name": "Der Dritte",
+       "m": 1,
+       "r": [
+        -8.0,
+        1.0,
+        0.0
+       ],
+       "v": [
+        1.0666666666666669,
+        0.0,
+        0.0
+       ],
+       "radius": 0.002,
+       "tooltip": "Der Dritte, Masse 1, kommt von links mit der Geschwindigkeit des Reglers und Stoßparameter 1,5. Langsam: Einfang. Mittel: Austausch, einer vom Paar fliegt. Schnell: Vorbeiflug. Unter etwa 1,1 ist die Spanne chaotisch, Zusammenstöße kommen vor und werden gemeldet, nicht weggerechnet."
+      }
+     ]
+    }
+   ],
+   "koerper": [
+    {
+     "name": "A",
+     "m": 1,
+     "r": [
+      3.5,
+      -0.5,
+      0.0
+     ],
+     "v": [
+      -0.4166666666666667,
+      -0.7071067811865476,
+      0.0
+     ],
+     "radius": 0.002,
+     "tooltip": "Stern A des Paars, Masse 1, Kreisbahn mit Abstand 1 zu B. Bis der Dritte kommt, ein Zweikörperproblem mit Formel; danach nicht mehr."
+    },
+    {
+     "name": "B",
+     "m": 1,
+     "r": [
+      4.5,
+      -0.5,
+      0.0
+     ],
+     "v": [
+      -0.4166666666666667,
+      0.7071067811865476,
+      0.0
+     ],
+     "radius": 0.002,
+     "tooltip": "Stern B des Paars. Ob er am Ende bei A bleibt, entscheidet die Begegnung mit dem Dritten; bei Austausch ist es A oder B, der geht, und das ist bei gleichen Massen Zufall im Sinne von: empfindlich auf die zehnte Stelle."
+    },
+    {
+     "name": "Der Dritte",
+     "m": 1,
+     "r": [
+      -8.0,
+      1.0,
+      0.0
+     ],
+     "v": [
+      0.8333333333333333,
+      0.0,
+      0.0
+     ],
+     "radius": 0.002,
+     "tooltip": "Der Dritte, Masse 1, kommt von links mit der Geschwindigkeit des Reglers und Stoßparameter 1,5. Langsam: Einfang. Mittel: Austausch, einer vom Paar fliegt. Schnell: Vorbeiflug. Unter etwa 1,1 ist die Spanne chaotisch, Zusammenstöße kommen vor und werden gemeldet, nicht weggerechnet."
+    }
+   ]
+  }
+ ]
+}
