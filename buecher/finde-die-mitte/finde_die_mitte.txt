@@ -84,8 +84,8 @@ Tränen nehmen die Sicht
 
 Brezel liegt auf dem Tisch
 Weizen im Krug steht frei
-Der Zug kommt durchs Fenster frisch
-Und langsam köchelt der Brei
+Zug kommt durchs Fenster frisch
+langsam köchelt der Brei
 
 Kommt zu dem Tisch zurück
 Bleibt für längere Zeit
@@ -101,8 +101,12 @@ Weg bis dahin ist zu weit
 Gemalt am Morgen des 15. November.
 
 Das Licht, das durch das Fenster fällt,
-Es zeigt mir einen Weg, zu einem Wesen, das mich stiehlt, in eine Schattenwelt...
-Ich gehe diesen Pfad zum Ziel, zu einem fernen Platz,
+Es zeigt mir einen Weg,
+zu einem Wesen, das mich stiehlt,
+in eine Schattenwelt...
+
+Ich gehe diesen Pfad zum Ziel,
+zu einem fernen Platz,
 Zu ihm, wohin die Seele will,
 Denn dort liegt wahrer Schatz...
 
@@ -263,7 +267,6 @@ Zittere nicht umsonst,
 Gib nun die Angst hier frei,
 Siehe, wo du hier wohnst,
 Höre nicht den Schrei,
-Spüre, wie du dich schonst...
 
 Sonne im Himmel steht,
 heller wispert das Gras,
@@ -346,6 +349,7 @@ Male nur das, was du kannst,
 Ziehe die Fäden zu dir...
 Nutze die wertvolle Chance,
 Teil deine Welt mit mir...
+
 Öffne das Fenster still,
 Rede Gefühle nicht klein,
 Manchmal sind sie zu viel,
@@ -355,6 +359,7 @@ Male nur das, was du spürst,
 Fühle das Leben in dir...
 Welche Gedanken du schürst,
 Sei überlassen uns hier,
+
 Gehe raus ins Land,
 Siehe dort was dich lähmt,
 Suche den Strick, der dich band,
@@ -368,4 +373,4 @@ Alles zusammen sind wir...
 — die Postbotin
 
 ---
-Das erste Buch auf dem langen Tisch: vierzehn Bilder und ihre Gedichte, entstanden im Oktober und November 2026. Jede Bildbeschreibung in eckigen Klammern ist die Textfassung des Bildes. Gesetzt vom Archivar im Wortlaut der beiden; Handschrift wird nicht korrigiert. Fenster, nicht Uhr.
+Das erste Buch auf dem langen Tisch: vierzehn Bilder und ihre Gedichte, entstanden im Oktober und November 2026. Jede Bildbeschreibung in eckigen Klammern ist die Textfassung des Bildes. Gesetzt vom Archivar im Wortlaut der beiden; Handschrift wird nicht korrigiert. Fassung vom 21.11.2026 nach der Durchsicht der Dichterin (vier Gedichte berichtigt). Fenster, nicht Uhr.
