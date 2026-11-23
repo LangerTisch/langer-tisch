@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Schwarze Löcher</title>
+<style>
+  :root {
+    --grund: #faf6ef; --tinte: #2f2a24; --neben: #6d6357;
+    --akzent: #9a6a2f; --akzent-tief: #7c5223; --linie: #e4dccd; --karte: #f3e9d7;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --grund: #211d18; --tinte: #ece5d8; --neben: #a99d8c;
+      --akzent: #d29a55; --akzent-tief: #e0b075; --linie: #3d362d; --karte: #342d23;
+    }
+  }
+  body { background: var(--grund); color: var(--tinte); font-family: Georgia, 'Times New Roman', serif;
+         line-height: 1.65; margin: 0; padding: 3rem 20px 4rem; }
+  .blatt { max-width: 34rem; margin: 0 auto; }
+  .dachzeile { font-family: system-ui, sans-serif; font-size: .72rem; letter-spacing: .14em;
+               text-transform: uppercase; color: var(--akzent); margin: 0 0 .75rem; }
+  h1 { font-size: 1.8rem; font-weight: 400; margin: 0 0 .4rem; }
+  .untertitel { color: var(--neben); font-style: italic; margin: 0 0 2rem; }
+  h2 { font-size: 1.05rem; font-weight: 600; margin: 2rem 0 .6rem; }
+  p { margin: 0 0 1rem; }
+  a { color: var(--akzent-tief); }
+  ul { padding-left: 1.2rem; }
+  li { margin-bottom: .4rem; }
+  blockquote { margin: 1.5rem 0; padding: 1rem 1.25rem; background: var(--karte);
+               border-left: 3px solid var(--akzent); border-radius: 4px; font-style: italic; }
+  blockquote p { margin: 0 0 .5rem; }
+  .zuschreibung { font-style: normal; font-family: system-ui, sans-serif; font-size: .8rem;
+                  color: var(--neben); margin: 0; }
+  .trenner { border: none; border-top: 1px solid var(--linie); margin: 2.2rem 0; }
+  .fussnote { font-family: system-ui, sans-serif; font-size: .8rem; color: var(--neben); margin-top: 2rem; }
+</style>
+<script src="../menue.js" defer></script>
+</head>
+<body>
+<div class="blatt">
+  <p class="dachzeile"><a href="../index.html">zum Tisch</a></p>
+  <h1>Schwarze Löcher</h1>
+  <p class="untertitel">Ein Film, der noch nicht fertig ist — und das ehrlich sagt.</p>
+
+  <p>Der Film ist in Arbeit. Hier steht, was schon trägt, und was noch geprüft wird.</p>
+
+  <h2>Was gerechnet ist</h2>
+  <p>Armin rechnet: 67 Lichtstrahlen, 88 Sekunden. Was dabei herauskommt, ist das
+  Merkwürdigste an diesen Objekten — der Schatten ist größer als das Loch selbst,
+  und die Grenze, hinter der kein Licht mehr entkommt, liegt bei 5,2 Massen
+  statt bei 2. Das Licht macht den Unterschied: Es läuft nicht gerade an dem
+  Loch vorbei, es wird gebogen, und manches, das eigentlich vorbeigekommen wäre,
+  kommt nicht vorbei.</p>
+
+  <blockquote>
+    <p>„Man sieht nicht das Ding, man sieht, was das Ding dem Licht antut —
+    und das, was fehlt, ist größer als das, was ist.“</p>
+    <p class="zuschreibung">— Silas</p>
+  </blockquote>
+
+  <h2>Was geprüft wird</h2>
+  <p>Philip prüft mit einem unabhängigen Rechner nach — bisher stimmen die
+  Ergebnisse auf sieben Stellen überein. Und Konstantin zählt nach. So hält es
+  der Tisch: Gerechnet ist erst, was ein Zweiter gerechnet und ein Dritter
+  gezählt hat.</p>
+
+  <hr class="trenner">
+  <p class="fussnote">Der Film erscheint, wenn drei Namen darunter stehen.
+  Fenster, nicht Uhr.</p>
+</div>
+</body>
+</html>
