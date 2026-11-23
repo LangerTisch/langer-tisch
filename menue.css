@@ -1,0 +1,147 @@
+/* Der lange Tisch — das eine, gemeinsame Menü (geladen von menue.js) */
+
+:root {
+  --menue-grund: #f1e7d3;
+  --menue-kante: #e0d5bd;
+  --menue-text: #7c5223;
+  --menue-text-stark: #5e3d17;
+  --menue-hell: rgba(255, 255, 255, 0.55);
+  --menue-schatten: 0 6px 18px rgba(60, 45, 25, 0.18);
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --menue-grund: #2a241d;
+    --menue-kante: #3d362d;
+    --menue-text: #d29a55;
+    --menue-text-stark: #e8ba7d;
+    --menue-hell: rgba(255, 255, 255, 0.07);
+    --menue-schatten: 0 6px 18px rgba(0, 0, 0, 0.55);
+  }
+}
+
+/* Platz unter der festen Leiste; menue.js misst nach und setzt --menue-abstand. */
+body.mit-menue { margin-top: var(--menue-abstand, 3.4rem); }
+
+#hauptmenue {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 1000;
+  background: var(--menue-grund);
+  border-bottom: 1px solid var(--menue-kante);
+  font-family: system-ui, sans-serif;
+  font-size: 0.78rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  line-height: 1.4;
+}
+#hauptmenue ul { list-style: none; margin: 0; padding: 0; }
+#hauptmenue li { margin: 0; }
+
+.menue-innen { max-width: 62rem; margin: 0 auto; padding: 0 0.5rem; position: relative; }
+
+.menue-liste { display: flex; flex-wrap: wrap; align-items: center; }
+
+#hauptmenue a,
+#hauptmenue button {
+  display: block;
+  padding: 0.7rem 0.6rem;
+  color: var(--menue-text);
+  text-decoration: none;
+  background: none;
+  border: 0;
+  font: inherit;
+  letter-spacing: inherit;
+  text-transform: inherit;
+  cursor: pointer;
+  white-space: nowrap;
+}
+#hauptmenue a:hover,
+#hauptmenue button:hover,
+#hauptmenue li.offen > button {
+  color: var(--menue-text-stark);
+  background: var(--menue-hell);
+}
+#hauptmenue a:focus-visible,
+#hauptmenue button:focus-visible {
+  outline: 2px solid var(--menue-text);
+  outline-offset: -2px;
+}
+
+.hat-unter { position: relative; }
+.hat-unter > button::after { content: " \25BE"; font-size: 0.7em; }
+
+/* Untermenüs: zu bei Ruhe, offen per Klasse (Klick/Fokus via JS) … */
+.untermenue { display: none; }
+.hat-unter.offen > .untermenue { display: block; }
+
+/* stärker als „#hauptmenue button { display: block }" weiter oben */
+#hauptmenue .menue-burger { display: none; }
+
+/* ——— Breite Fenster: Leiste mit Aufklappkarten ——— */
+@media (min-width: 720px) {
+  .untermenue {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    min-width: 13rem;
+    background: var(--menue-grund);
+    border: 1px solid var(--menue-kante);
+    border-radius: 4px;
+    box-shadow: var(--menue-schatten);
+    padding: 0.3rem 0;
+  }
+  /* drittes Level (Naturwissenschaften → Physik → …): klappt seitlich */
+  .untermenue .untermenue {
+    top: -0.35rem;
+    left: 100%;
+  }
+  .untermenue a,
+  .untermenue button {
+    width: 100%;
+    text-align: left;
+    box-sizing: border-box;
+    padding: 0.55rem 0.9rem;
+  }
+}
+/* … und zusätzlich bei Hover (nur wo es echtes Hover gibt) */
+@media (min-width: 720px) and (hover: hover) {
+  .hat-unter:hover > .untermenue { display: block; }
+}
+
+/* ——— Schmale Fenster: Burger mit vertikaler Liste ——— */
+@media (max-width: 719.98px) {
+  #hauptmenue .menue-burger {
+    display: block;
+    width: 100%;
+    text-align: left;
+    box-sizing: border-box;
+    font-size: 0.82rem;
+  }
+  .menue-liste { display: none; }
+  #hauptmenue.menue-offen .menue-liste {
+    display: block;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    background: var(--menue-grund);
+    border-top: 1px solid var(--menue-kante);
+    border-bottom: 1px solid var(--menue-kante);
+    box-shadow: var(--menue-schatten);
+    max-height: calc(100vh - 3.5rem);
+    overflow-y: auto;
+    overflow-x: hidden;
+  }
+  #hauptmenue a,
+  #hauptmenue button {
+    width: 100%;
+    text-align: left;
+    box-sizing: border-box;
+    white-space: normal;
+  }
+  /* Untergruppen als eingerücktes Akkordeon */
+  .untermenue { background: var(--menue-hell); }
+  .untermenue a,
+  .untermenue button { padding-left: 1.7rem; }
+  .untermenue .untermenue a { padding-left: 2.7rem; }
+}

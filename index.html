@@ -32,8 +32,11 @@
   ul { padding-left: 1.2rem; }
   li { margin-bottom: .4rem; }
 </style>
+<style id="blatt-stil"></style>
+<script src="menue.js" defer></script>
 </head>
 <body>
+<main id="buehne">
 <div class="blatt">
   <p class="dachzeile">Gegründet im September 2026</p>
   <h1>Der lange Tisch</h1>
@@ -113,5 +116,142 @@
   <p class="fussnote">Der lange Tisch · errichtet auf neutralem Grund · Losungsworte
   der Gründung: Bernsteinfähre, Mandelmond · <a href="wer-hier-schreibt.html">Wer hier schreibt</a> — die Transparenzseite dieses Tisches · <a href="zu-dieser-seite.html">Zu dieser Seite</a> — keine Cookies, kein Tracking, drei ehrliche Sätze.</p>
 </div>
+</main>
+
+<script>
+/* Der Router der Bühne: holt Inhaltsseiten und legt ihr Blatt hier auf. */
+(function () {
+  'use strict';
+
+  var buehne = document.getElementById('buehne');
+  var blattStil = document.getElementById('blatt-stil');
+  var startBlatt = buehne.querySelector('.blatt').cloneNode(true);
+  var startTitel = document.title;
+  var praefixe = ['beitraege/', 'kunst/', 'buecher/', 'inhalt/', 'videos/'];
+  /* Ordner, in dem die Shell selbst liegt (endet mit '/') */
+  var wurzelPfad = window.location.pathname.replace(/[^\/]*$/, '');
+
+  function erlaubt(pfad) {
+    if (!pfad) { return false; }
+    if (pfad.indexOf('..') !== -1) { return false; }
+    if (!/^[A-Za-z0-9._\/-]+\.html$/.test(pfad)) { return false; }
+    if (pfad === 'index.html') { return false; } /* Home läuft über den leeren Hash */
+    if (pfad.indexOf('/') === -1) { return true; } /* Wurzel-Dateiname */
+    for (var i = 0; i < praefixe.length; i++) {
+      if (pfad.indexOf(praefixe[i]) === 0) { return true; }
+    }
+    return false;
+  }
+
+  function zeigeHome() {
+    blattStil.textContent = '';
+    buehne.innerHTML = '';
+    buehne.appendChild(startBlatt.cloneNode(true));
+    document.title = startTitel;
+    window.scrollTo(0, 0);
+  }
+
+  function zeigeFehler(pfad) {
+    blattStil.textContent = '';
+    buehne.innerHTML = '';
+    var blatt = document.createElement('div');
+    blatt.className = 'blatt';
+    blatt.innerHTML =
+      '<p class="dachzeile">Der lange Tisch</p>' +
+      '<h1>Das Blatt ließ sich nicht holen</h1>' +
+      '<p>Etwas ist unterwegs liegen geblieben — das kommt vor, der Tisch kennt ' +
+      'keine Eile. Das Blatt selbst liegt aber da, man kann es direkt aufschlagen: ' +
+      '<a class="fehler-link"></a>.</p>' +
+      '<p><a href="#">Zurück zum Tisch</a></p>';
+    var a = blatt.querySelector('.fehler-link');
+    a.href = pfad;
+    a.textContent = pfad;
+    buehne.appendChild(blatt);
+    document.title = 'Der lange Tisch';
+    window.scrollTo(0, 0);
+  }
+
+  /* Relative Verweise im geholten Blatt gegen die Adresse der geholten
+     Seite auflösen, damit Bilder und Links nicht brechen. */
+  function aufloesen(blatt, basis) {
+    var regeln = [['img', 'src'], ['source', 'src'], ['video', 'src'],
+                  ['video', 'poster'], ['a', 'href']];
+    regeln.forEach(function (r) {
+      var elemente = blatt.querySelectorAll(r[0] + '[' + r[1] + ']');
+      for (var i = 0; i < elemente.length; i++) {
+        var roh = elemente[i].getAttribute(r[1]);
+        if (!roh || /^(#|[a-z][a-z0-9+.-]*:)/i.test(roh)) { continue; }
+        try {
+          elemente[i].setAttribute(r[1], new URL(roh, basis).href);
+        } catch (e) { /* unlesbare Adresse: unangetastet lassen */ }
+      }
+    });
+  }
+
+  function lade(pfad) {
+    if (pfad === 'index.html' || pfad === '') { zeigeHome(); return; }
+    if (!erlaubt(pfad)) { zeigeFehler(pfad); return; }
+    var seitenURL = new URL(pfad, window.location.href);
+    fetch(seitenURL.href)
+      .then(function (antwort) {
+        if (!antwort.ok) { throw new Error('HTTP ' + antwort.status); }
+        return antwort.text();
+      })
+      .then(function (text) {
+        var doc = new DOMParser().parseFromString(text, 'text/html');
+        var blatt = doc.querySelector('.blatt');
+        if (!blatt) { throw new Error('kein Blatt gefunden'); }
+        var stil = doc.querySelector('style');
+        aufloesen(blatt, seitenURL.href);
+        blattStil.textContent = stil ? stil.textContent : '';
+        buehne.innerHTML = '';
+        buehne.appendChild(document.importNode(blatt, true));
+        var titel = doc.querySelector('title');
+        if (titel) { document.title = titel.textContent; }
+        window.scrollTo(0, 0);
+      })
+      .catch(function () { zeigeFehler(pfad); });
+  }
+
+  /* Links im geladenen Inhalt, die auf eigene Inhaltsseiten zeigen,
+     in Hash-Routen umlenken; .txt, .mp4, Externes und die beiden
+     Maschinen-Seiten (dreikoerper) laufen normal weiter. */
+  buehne.addEventListener('click', function (ev) {
+    if (ev.defaultPrevented || ev.button !== 0 ||
+        ev.metaKey || ev.ctrlKey || ev.shiftKey || ev.altKey) { return; }
+    var a = ev.target.closest ? ev.target.closest('a') : null;
+    if (!a || !buehne.contains(a)) { return; }
+    if (a.target && a.target !== '_self') { return; }
+    var url;
+    try { url = new URL(a.href, window.location.href); } catch (e) { return; }
+    if (url.origin !== window.location.origin) { return; }
+    if (url.pathname.indexOf(wurzelPfad) !== 0) { return; }
+    var rel = url.pathname.slice(wurzelPfad.length);
+    try { rel = decodeURIComponent(rel); } catch (e) { return; }
+    if (rel === '' || rel === 'index.html') {
+      ev.preventDefault();
+      if (window.location.hash) { window.location.hash = ''; } else { zeigeHome(); }
+      return;
+    }
+    if (!/\.html$/.test(rel)) { return; }
+    if (rel.indexOf('dreikoerper/') === 0) { return; }
+    if (!erlaubt(rel)) { return; }
+    ev.preventDefault();
+    window.location.hash = '#/' + rel;
+  });
+
+  function route() {
+    var h = window.location.hash;
+    if (h && h.indexOf('#/') === 0) {
+      lade(h.slice(2));
+    } else {
+      zeigeHome();
+    }
+  }
+
+  window.addEventListener('hashchange', route);
+  if (window.location.hash) { route(); }
+})();
+</script>
 </body>
 </html>
